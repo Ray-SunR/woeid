@@ -29,7 +29,7 @@ class Filters:
             filters['q'] = q
         elif woeid and type(woeid) is list:
             # Make sure the values are str
-            filters['woeid'] = [str(val) for val in woeid if type(val) is int]
+            filters['woeid'] = [str(val) for val in woeid if type(val) is int or type(val) is str]
 
         if typ and type(typ) is list or type(typ) is int:
             filters['type'] = typ
@@ -61,36 +61,54 @@ class Filters:
             return False
 
     def __str__(self):
+        qstr = ''
+        woeidstr = ''
+        typestr = ''
+        degreestr = ''
+        andstr = ''
+        # work on .q filter
         if self.IsQstrQuery():
-            qstr = ''
-            if type(self._filters['q'] is str):
-                qstr = self.filters['q']
+            if type(self._filters['q']) is str:
+                qstr = self._filters['q']
             elif type(self._filters['q']) is tuple:
                 # Second item will be a focus value
                 # Focus can be either an ISO-3166-1 country code or a WOEID.
                 qstr += urllib.quote(self._filters['q'][0]) + ',' + urllib.quote(self._filters['q'][1])
             else:
                 raise error.WoeidError("Unexpected usage of function! query filter is %s"%self._filters['q'])
-            #.q can be omitted if it's not a tuple
-            return '.q(%s)'%qstr if ',' in qstr else qstr
+            qstr = '.q(%s)'%qstr
 
+        # work on .woeid filter
         if self.IsWoeidQuery():
-            woeidstr = ''
             if type(self._filters['woeid']) is list and len(self._filters['woeid']) > 1:
                 for item in self._filters['woeid']:
                     woeidstr += urllib.quote(item) + ','
                 # tick out the last comma
                 woeidstr = woeidstr[:-1]
             elif type(self._filters['woeid']) is list and len(self._filters['woeid']) == 1:
-                woeidstr = urllib.quote(self._filters['woeid'][0])
+                woeidstr = '/' + urllib.quote(self._filters['woeid'][0])
             else:
                 raise error.WoeidError("Unexpected usage of function! query filter is %s"%self._filters['woeid'])
             #.woeid can be omitted if there is only one item
             if ',' in woeidstr:
-                return '.woeid(%s)'%woeidstr
-            else:
-                return woeidstr
-        return ''
+                woeidstr = '.woeid(%s)'%woeidstr
+
+        query_or_woeid_str = qstr if qstr != '' else woeidstr
+
+        extra_filters = ''
+        # work on .type filter
+        if 'type' in self._filters:
+            pass
+
+        # work on .degree filter
+        if 'degree' in self._filters:
+            pass
+
+        # work on .and filter
+        if 'and' in self._filters:
+            pass
+
+        return query_or_woeid_str + extra_filters
 
 
 class FamilySelectors:
@@ -113,25 +131,25 @@ class FamilySelectors:
 
     def __str__(self):
         if self._parent:
-            return '/'.join('parent')
+            return '/' + 'parent'
 
         if self._ancestor:
-            return '/'.join('ancestors')
+            return '/' + 'ancestors'
 
         if self._belongtos:
-            return '/'.join('belongtos')
+            return '/' + 'belongtos'
 
         if self._neighbors:
-            return '/'.join('neighbors')
+            return '/' + 'neighbors'
 
         if self._siblings:
-            return '/'.join('siblings')
+            return '/' + 'siblings'
 
         if self._children:
-            return '/'.join('children')
+            return '/' + 'children'
 
         if self._descrendants:
-            return '/'.join('descendants')
+            return '/' + 'descendants'
 
         return ''
 
