@@ -35,10 +35,10 @@ class Filters:
             filters['type'] = typ
 
         if degree and type(degree) is int:
-            filter['degree'] = degree
+            filters['degree'] = degree
 
         if aand and type(aand) is bool:
-            filter['and'] = aand
+            filters['and'] = aand
         self._filters = filters
 
 
@@ -69,7 +69,7 @@ class Filters:
         # work on .q filter
         if self.IsQstrQuery():
             if type(self._filters['q']) is str:
-                qstr = self._filters['q']
+                qstr = urllib.quote(self._filters['q'])
             elif type(self._filters['q']) is tuple:
                 # Second item will be a focus value
                 # Focus can be either an ISO-3166-1 country code or a WOEID.
@@ -82,7 +82,8 @@ class Filters:
         if self.IsWoeidQuery():
             if type(self._filters['woeid']) is list and len(self._filters['woeid']) > 1:
                 for item in self._filters['woeid']:
-                    woeidstr += urllib.quote(item) + ','
+                    if (type(item) is str and item.isdigit()) or type(item) is int:
+                        woeidstr += urllib.quote(item) + ','
                 # tick out the last comma
                 woeidstr = woeidstr[:-1]
             elif type(self._filters['woeid']) is list and len(self._filters['woeid']) == 1:
@@ -93,22 +94,49 @@ class Filters:
             if ',' in woeidstr:
                 woeidstr = '.woeid(%s)'%woeidstr
 
-        query_or_woeid_str = qstr if qstr != '' else woeidstr
-
-        extra_filters = ''
         # work on .type filter
         if 'type' in self._filters:
-            pass
+            tpitem = self._filters['type']
+            # TODO: add check for api type because `.type(list)` filter can only apply to /places resources
+            if type(tpitem) is list:
+                for item in tpitem:
+                    if (type(item) is str and item.isdigit()) or type(item) is int:
+                        typestr += urllib.quote(item) + ','
+                typestr = typestr[:-1]
+                typestr = '.type(%s)'%typestr
+            elif (type(tpitem) is str and tpitem.isdigit()) or type(tpitem) is int:
+                typestr = '.type(%s)'%urllib.quote(str(tpitem))
 
         # work on .degree filter
         if 'degree' in self._filters:
-            pass
+            degree = str(self._filters['degree'])
+            degreestr = '.degree(%s)'%degree
 
         # work on .and filter
         if 'and' in self._filters:
-            pass
+            conda = ''
+            condb = ''
+            if self.IsQstrQuery() and qstr:
+                conda = qstr
+            if self.IsWoeidQuery() and woeidstr:
+                conda = woeidstr
 
-        return query_or_woeid_str + extra_filters
+            if typestr:
+                condb = typestr
+            if degreestr:
+                condb = degreestr
+
+            if conda and condb:
+                andstr = '$and(%s,%s)'%(conda,condb)
+
+        # TODO: add check for api type because `$and` filter can only apply to /places resources
+        if andstr:
+            return andstr
+
+
+        query_or_woeid_str = qstr if qstr else woeidstr
+
+        return query_or_woeid_str + typestr + degreestr
 
 
 class FamilySelectors:

@@ -34,7 +34,7 @@ class Api():
                  children=False,
                  siblings=False,
                  descendants=False):
-        extra_paths = ['place/' + str(woeid)]
+        extra_paths = ['place/' + str(woeid[0])]
         filters = Filters(typ=typ, degree=degree, aand=nd)
         family_selectors = FamilySelectors(parent,ancestors,belongtos,neighbors,siblings,children,descendants)
 
