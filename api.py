@@ -1,11 +1,11 @@
 import utility
 
 __author__ = 'Renchen'
-import config
 from modules import(
     Filters,
-    Selectors,
+    Relationships,
 )
+from urllib import quote
 from utility import Utility
 BuildParams = Utility.BuildParams
 BuildUrls = Utility.BuildUrls
@@ -44,7 +44,7 @@ class Api():
                           degree=degree,
                           aand=nd)
 
-        family_selectors = Selectors(parent,
+        relationships = Relationships(parent,
                                      ancestors,
                                      belongtos,
                                      neighbors,
@@ -62,7 +62,7 @@ class Api():
                         extra_params=extra_parms,
                         extra_woeid=None if type(woeid) is int else woeid[1:],
                         filters=filters,
-                        selectors=family_selectors)
+                        relationships=relationships)
         return MakeRequest(url)
 
     def GetPlaces(self,
@@ -92,4 +92,53 @@ class Api():
                         extra_params=extra_params,
                         filters=filters,
                         count=count)
+        return MakeRequest(url)
+
+    def GetContinents(self):
+        extra_paths = ['continents']
+
+        extra_params = BuildParams(self._appid,
+                                   format=self._format,
+                                   select=self._select)
+        url = BuildUrls(url=self._base_url,
+                        path_elements=extra_paths,
+                        extra_params=extra_params)
+        return MakeRequest(url)
+
+    def GetOceans(self):
+        extra_paths = ['oceans']
+
+        extra_params = BuildParams(self._appid,
+                                   format=self._format,
+                                   select=self._select)
+        url = BuildUrls(url=self._base_url,
+                        path_elements=extra_paths,
+                        extra_params=extra_params)
+
+        return MakeRequest(url)
+
+    def GetSeas(self,
+                place=None):
+        extra_paths = ['seas']
+        if type(place) is str and place:
+            extra_paths.append(quote(place))
+
+        extra_params = BuildParams(self._appid,
+                                   format=self._format,
+                                   select=self._select)
+        url = BuildUrls(url=self._base_url,
+                        path_elements=extra_paths,
+                        extra_params=extra_params)
+
+        return MakeRequest(url)
+
+    def GetCountries(self):
+        extra_paths = ['countries']
+        extra_params = BuildParams(self._appid,
+                                   format=self._format,
+                                   select=self._select)
+        url = BuildUrls(url=self._base_url,
+                        path_elements=extra_paths,
+                        extra_params=extra_params)
+
         return MakeRequest(url)

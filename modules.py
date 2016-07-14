@@ -139,7 +139,7 @@ class Filters:
         return query_or_woeid_str + typestr + degreestr
 
 
-class Selectors:
+class Relationships:
     def __init__(self,
                  parent=False,
                  ancestors=False,

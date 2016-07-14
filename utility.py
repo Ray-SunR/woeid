@@ -2,7 +2,7 @@ import json
 import urllib
 import requests
 import error
-from modules import Selectors, Filters
+from modules import Relationships, Filters
 import xml.dom.minidom
 from xml.etree import ElementTree as ET
 
@@ -15,7 +15,7 @@ class Utility:
               extra_params=None,
               extra_woeid=None,
               filters=None,
-              selectors=None,
+              relationships=None,
               count=None):
         (scheme, netloc, path, params, query, fragment) = urlparse.urlparse(url)
 
@@ -35,8 +35,8 @@ class Utility:
             else:
                 query = extra_query
 
-        if selectors and isinstance(selectors, Selectors):
-            path += str(selectors)
+        if relationships and isinstance(relationships, Relationships):
+            path += str(relationships)
 
         if extra_woeid:
             for woeid in extra_woeid:

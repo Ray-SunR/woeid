@@ -63,6 +63,20 @@ def main(args=None):
     '''Example 25. Retrieving a Place That is Common Ancestor of Three Places'''
     api.PrettyPrintResult(myapi.GetPlace(woeid=(2488042, 2488836, 2486340), common=True))
 
+    '''Example 26. Retrieving All Continents'''
+    api.PrettyPrintResult(myapi.GetContinents())
 
+    '''Example 27. Retrieving All Oceans'''
+    api.PrettyPrintResult(myapi.GetOceans())
+
+    '''Example 28. Retrieving All Seas'''
+    api.PrettyPrintResult(myapi.GetSeas())
+
+    '''Example 29. Retrieving the Seas Adjacent to or Part of the Pacific Ocean'''
+    myapi._select='short'
+    api.PrettyPrintResult(myapi.GetSeas(place='Pacific Ocean'))
+
+    '''Example 30. Retrieving All Countries'''
+    api.PrettyPrintResult(myapi.GetCountries())
 if __name__ == "__main__":
     main()
