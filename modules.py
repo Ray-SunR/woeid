@@ -42,23 +42,23 @@ class Filters:
         self._filters = filters
 
 
-    def IsQstrQuery(self):
-        if 'q' in self._filters:
-            return True
-        else:
-            return False
+    def HasQ(self):
+        return 'q' in self._filters
 
-    def IsWoeidQuery(self):
-        if 'woeid' in self._filters:
-            return True
-        else:
-            return False
+    def HasWoeid(self):
+        return 'woeid' in self._filters
+
+    def HasType(self):
+        return 'type' in self._filters
+
+    def HasDegree(self):
+        return 'degree' in self._filters
+
+    def HasAnd(self):
+        return 'and' in self._filters
 
     def IsValid(self):
-        if type(self._filters) is dict:
-            return True
-        else:
-            return False
+        return type(self._filters) is dict
 
     def __str__(self):
         qstr = ''
@@ -67,7 +67,7 @@ class Filters:
         degreestr = ''
         andstr = ''
         # work on .q filter
-        if self.IsQstrQuery():
+        if self.HasQ():
             if type(self._filters['q']) is str:
                 qstr = urllib.quote(self._filters['q'])
             elif type(self._filters['q']) is tuple:
@@ -79,7 +79,7 @@ class Filters:
             qstr = '.q(%s)'%qstr
 
         # work on .woeid filter
-        if self.IsWoeidQuery():
+        if self.HasWoeid():
             if type(self._filters['woeid']) is list and len(self._filters['woeid']) > 1:
                 for item in self._filters['woeid']:
                     if (type(item) is str and item.isdigit()) or type(item) is int:
@@ -116,9 +116,9 @@ class Filters:
         if 'and' in self._filters:
             conda = ''
             condb = ''
-            if self.IsQstrQuery() and qstr:
+            if self.HasQ() and qstr:
                 conda = qstr
-            if self.IsWoeidQuery() and woeidstr:
+            if self.HasWoeid() and woeidstr:
                 conda = woeidstr
 
             if typestr:
@@ -139,7 +139,7 @@ class Filters:
         return query_or_woeid_str + typestr + degreestr
 
 
-class FamilySelectors:
+class Selectors:
     def __init__(self,
                  parent=False,
                  ancestors=False,
@@ -147,37 +147,82 @@ class FamilySelectors:
                  neighbors=False,
                  siblings=False,
                  children=False,
-                 descendants=False):
+                 descendants=False,
+                 common=False):
 
         self._parent=parent
-        self._ancestor=ancestors
+        self._ancestors=ancestors
         self._belongtos=belongstos
         self._neighbors=neighbors
         self._siblings=siblings
         self._children=children
-        self._descrendants=descendants
+        self._descendants=descendants
+        self._common=common
 
     def __str__(self):
         if self._parent:
-            return '/' + 'parent'
+            return '/parent'
 
-        if self._ancestor:
-            return '/' + 'ancestors'
+        if self._ancestors:
+            return '/ancestors'
 
         if self._belongtos:
-            return '/' + 'belongtos'
+            return '/belongtos'
 
         if self._neighbors:
-            return '/' + 'neighbors'
+            return '/neighbors'
 
         if self._siblings:
-            return '/' + 'siblings'
+            return '/siblings'
 
         if self._children:
-            return '/' + 'children'
+            return '/children'
 
-        if self._descrendants:
-            return '/' + 'descendants'
+        if self._descendants:
+            return '/descendants'
+
+        if self._common:
+            return '/common/'
 
         return ''
+
+    def Validate(self, filters):
+        if type(filters) is not Filters:
+            raise error.WoeidError("Unexpected modules usage: %s"%"Validate takes a Filters object as its argument")
+
+        if not filters.IsValid():
+            raise error.WoeidError("Unexpected API usage: %s"%"filters should be a dictionary")
+
+        ''' /parent, /ancestors, /siblings, /common/ don't support any filters'''
+        if self._parent and filters.keys():
+            raise error.WoeidError("Unexpected API usage: %s"%"woeid/parent doesn't support filters")
+
+        if self._ancestors and filters.keys():
+            raise error.WoeidError("Unexpected API usage: %s"%"woeid/ancestors doesn't support filters")
+
+        if self._siblings and filters.keys():
+            raise error.WoeidError("Unexpected API usage: %s"%"woeid/siblings doesn't support filters")
+
+        if self._common and filters.keys():
+            raise error.WoeidError("Unexpected API usage: %s"%"woeid1/common/woeid2 doesn't support filters")
+
+        '''/belongtos and /descendants and /children support .type filter'''
+        if self._belongtos and (filters.HasAnd() or filters.HasDegree() or filters.HasQ() or filters.HasWoeid()):
+            raise error.WoeidError("Unexpected API usage: %s"%"woeid/belongtos supports .type filter only")
+
+        if self._descendants and (filters.HasAnd() or filters.HasDegree() or filters.HasQ() or filters.HasWoeid()):
+            raise error.WoeidError("Unexpected API usage: %s"%"woeid/descendants supports .type filter only")
+
+        if self._children and (filters.HasWoeid() or filters.HasQ() or filters.HasAnd()):
+            raise error.WoeidError("Unexpected API usage: %s"%"woeid/children supports .degree or .type filters only")
+
+        '''/neighbors support .degree filter'''
+        if self._neighbors and (filters.HasWoeid() or filters.HasType() or filters.HasQ() or filters.HasAnd()):
+            raise error.WoeidError("Unexpected API usage: %s"%"woeid/neighbors supports .degree filter only")
+
+
+
+
+
+
 

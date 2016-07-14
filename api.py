@@ -4,7 +4,7 @@ __author__ = 'Renchen'
 import config
 from modules import(
     Filters,
-    FamilySelectors,
+    Selectors,
 )
 from utility import Utility
 BuildParams = Utility.BuildParams
@@ -33,20 +33,44 @@ class Api():
                  neighbors=False,
                  children=False,
                  siblings=False,
-                 descendants=False):
-        extra_paths = ['place/' + str(woeid[0])]
-        filters = Filters(typ=typ, degree=degree, aand=nd)
-        family_selectors = FamilySelectors(parent,ancestors,belongtos,neighbors,siblings,children,descendants)
+                 descendants=False,
+                 common=False):
+        if type(woeid) == int:
+            extra_paths = ['place/' + str(woeid)]
+        else:
+            extra_paths = ['place/' + str(woeid[0])]
 
-        extra_parms = BuildParams(appid=self._appid,format=self._format,select=self._select)
-        url = BuildUrls(self._base_url, extra_paths, extra_parms, filters, family_selectors)
+        filters = Filters(typ=typ,
+                          degree=degree,
+                          aand=nd)
+
+        family_selectors = Selectors(parent,
+                                     ancestors,
+                                     belongtos,
+                                     neighbors,
+                                     siblings,
+                                     children,
+                                     descendants,
+                                     common)
+
+        extra_parms = BuildParams(appid=self._appid,
+                                  format=self._format,
+                                  select=self._select)
+
+        url = BuildUrls(url=self._base_url,
+                        path_elements=extra_paths,
+                        extra_params=extra_parms,
+                        extra_woeid=None if type(woeid) is int else woeid[1:],
+                        filters=filters,
+                        selectors=family_selectors)
         return MakeRequest(url)
 
     def GetPlaces(self,
                   q=None,
                   woeid=None,
                   typ=None,
-                  nd=None):
+                  nd=None,
+                  count=None):
 
         '''
         Returns a collection of places that match a specified place name, and optionally, a specified place type. The resources in the collection are long representations of each place (unless short representations are explicitly requested).
@@ -58,6 +82,14 @@ class Api():
         '''
         filters = Filters(q=q, woeid=woeid, typ=typ, aand=nd)
         extra_paths = ['places']
-        extra_params = BuildParams(self._appid, format=self._format, select=self._select)
-        url = BuildUrls(self._base_url, extra_paths, extra_params, filters)
+
+        extra_params = BuildParams(self._appid,
+                                   format=self._format,
+                                   select=self._select)
+
+        url = BuildUrls(url=self._base_url,
+                        path_elements=extra_paths,
+                        extra_params=extra_params,
+                        filters=filters,
+                        count=count)
         return MakeRequest(url)

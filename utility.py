@@ -2,7 +2,9 @@ import json
 import urllib
 import requests
 import error
-from modules import FamilySelectors, Filters
+from modules import Selectors, Filters
+import xml.dom.minidom
+from xml.etree import ElementTree as ET
 
 __author__ = 'Renchen'
 import urlparse
@@ -11,8 +13,10 @@ class Utility:
     def BuildUrls(url,
               path_elements,
               extra_params=None,
+              extra_woeid=None,
               filters=None,
-              familyselectors=None):
+              selectors=None,
+              count=None):
         (scheme, netloc, path, params, query, fragment) = urlparse.urlparse(url)
 
         # Add any additional path elements to the path
@@ -31,12 +35,19 @@ class Utility:
             else:
                 query = extra_query
 
+        if selectors and isinstance(selectors, Selectors):
+            path += str(selectors)
+
+        if extra_woeid:
+            for woeid in extra_woeid:
+                path += str(woeid) + '/'
+            path = path[:-1]
+
         if filters and isinstance(filters, Filters) and filters.IsValid():
             path += str(filters)
 
-        if familyselectors and isinstance(familyselectors, FamilySelectors):
-            '''# only apply it if the query or woeid operator only has one target'''
-            path += str(familyselectors)
+        if type(count) is int:
+            path += ';count=%s'%str(count)
         # Return the rebuilt URL
         return urlparse.urlunparse((scheme, netloc, path, params, query, fragment))
 
@@ -77,12 +88,18 @@ class Utility:
             if response.status_code != 200:
                 raise error.WoeidError("Error on non-200 response code. Details: %s"%response.reason)
             else:
-                ret = response.json()
+                ret = response.text
         except:
             raise error.WoeidError("Unknown error occur")
         finally:
             return ret
 
     @staticmethod
-    def PrettyPrintResult(jsonstr):
-        print(json.dumps(jsonstr, indent=4, separators={',', ': '}))
+    def PrettyPrintResult(str):
+        try:
+            print(json.dumps(json.loads(str), indent=4, separators={',',': '}))
+        except ValueError as e:
+            xxml = xml.dom.minidom.parseString(str)
+            print(xxml.toprettyxml())
+        finally:
+            pass
