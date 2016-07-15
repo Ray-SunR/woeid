@@ -72,11 +72,13 @@ class Utility:
     @staticmethod
     def BuildParams(appid,
                     format='json',
-                    select='short'):
+                    select='short',
+                    lang='en-us'):
         return {
             'format':format,
             'appid':appid,
-            'select':select
+            'select':select,
+            'lang':lang
         }
 
     @staticmethod
@@ -89,15 +91,21 @@ class Utility:
                 raise error.WoeidError("Error on non-200 response code. Details: %s"%response.reason)
             else:
                 ret = response.text
-        except:
-            raise error.WoeidError("Unknown error occur")
-        finally:
+                return ret
+        except error.WoeidError as e:
+            print(e.message)
             return ret
+
 
     @staticmethod
     def PrettyPrintResult(str):
+        if not str or (type(str) is not str and type(str) is not unicode):
+            return
+        str = str.encode('utf8')
         try:
             print(json.dumps(json.loads(str), indent=4, separators={',',': '}))
+        except TypeError as e:
+            pass
         except ValueError as e:
             xxml = xml.dom.minidom.parseString(str)
             print(xxml.toprettyxml())

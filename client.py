@@ -1,6 +1,6 @@
-import config
-
+# -*- coding: utf-8 -*-
 __author__ = 'Renchen'
+import config
 import api
 
 def main(args=None):
@@ -10,7 +10,8 @@ def main(args=None):
     api.PrettyPrintResult(myapi.GetPlaces(q='SFO'))
 
     '''Example 9. Retrieving the Five Most Likely Places for a Given Placename'''
-    api.PrettyPrintResult(myapi.GetPlaces(q='CA',count=5))
+    myapi._lang = 'zh-Hans'
+    api.PrettyPrintResult(myapi.GetPlaces(q=u'中国',count=5))
 
     '''Example 10. Retrieving All Places for a Given Place Name and Place Type'''
     api.PrettyPrintResult(myapi.GetPlaces(q='Long Island',typ=22,nd=True))
@@ -78,5 +79,46 @@ def main(args=None):
 
     '''Example 30. Retrieving All Countries'''
     api.PrettyPrintResult(myapi.GetCountries())
+
+    '''Example 31. Retrieving the Countries Within North America (NA)'''
+    api.PrettyPrintResult(myapi.GetCountries(place='NA'))
+
+    '''Example 32. Retrieving the States Within the United States (US)'''
+    api.PrettyPrintResult(myapi.GetStates(country='US'))
+
+    '''Example 33. Retrieving the Counties Within California (CA)'''
+    api.PrettyPrintResult(myapi.GetCounties(state='CA'))
+
+    '''Example 34. Retrieving the Districts of Greater London'''
+    api.PrettyPrintResult(myapi.GetDistricts(county='Greater London'))
+
+    '''Example 35. Retrieving the WOEID and FIPs Code for a Given ISO Code'''
+    api.PrettyPrintResult(myapi.GetConcordance(namespace='iso', id='CA-BC'))
+
+    '''Example 36. Retrieving a Collection of Place Types'''
+    api.PrettyPrintResult(myapi.GetPlacetypes())
+
+    '''Example 37. Retrieving a Collection of Place Types and Their Descriptions'''
+    myapi._select = 'long'
+    api.PrettyPrintResult(myapi.GetPlacetypes())
+
+    '''Example 38. Retrieving a Partial Collection of Place Types'''
+    myapi._select = 'short'
+    api.PrettyPrintResult(myapi.GetPlacetypes(typ=[0,2,22,37,38,15,16]))
+
+    '''Example 39. Retrieving All Placetypes for Spain'''
+    api.PrettyPrintResult(myapi.GetPlacetypes(country='ES'))
+
+    '''Example 40. Retrieving a Short Representation of the Resource for a Place Type'''
+    api.PrettyPrintResult(myapi.GetPlacetypes(typ=35))
+
+    '''Example 41. Retrieving a Long Representation of the Resource for a Place Type'''
+    myapi._select = 'long'
+    api.PrettyPrintResult(myapi.GetPlacetypes(typ=35))
+
+    '''Example 42. Retrieving the Province Placetype for Spain'''
+    api.PrettyPrintResult(myapi.GetPlacetype(typ=9,country='ES'))
+
+
 if __name__ == "__main__":
     main()

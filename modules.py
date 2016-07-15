@@ -24,8 +24,9 @@ class Filters:
 
         '''
         filters = {}
+
          # q and woeid are mutually exclusive
-        if q and type(q) is str or type(q) is tuple:
+        if q and type(q) is str or type(q) is tuple or type(q) is unicode:
             filters['q'] = q
         elif woeid and type(woeid) is list:
             # Make sure the values are str
@@ -68,12 +69,14 @@ class Filters:
         andstr = ''
         # work on .q filter
         if self.HasQ():
-            if type(self._filters['q']) is str:
-                qstr = urllib.quote(self._filters['q'])
+            if type(self._filters['q']) is str or type(self._filters['q'] is unicode):
+                qstr = urllib.quote(self._filters['q'].encode('utf-8'))
             elif type(self._filters['q']) is tuple:
+                stra = self._filters['q'][0].encode('utf-8')
+                strb = self._filters['q'][1].encode('utf-8')
                 # Second item will be a focus value
                 # Focus can be either an ISO-3166-1 country code or a WOEID.
-                qstr += urllib.quote(self._filters['q'][0]) + ',' + urllib.quote(self._filters['q'][1])
+                qstr += urllib.quote(stra + ',' + strb)
             else:
                 raise error.WoeidError("Unexpected usage of function! query filter is %s"%self._filters['q'])
             qstr = '.q(%s)'%qstr
@@ -101,7 +104,7 @@ class Filters:
             if type(tpitem) is list:
                 for item in tpitem:
                     if (type(item) is str and item.isdigit()) or type(item) is int:
-                        typestr += urllib.quote(item) + ','
+                        typestr += urllib.quote(str(item)) + ','
                 typestr = typestr[:-1]
                 typestr = '.type(%s)'%typestr
             elif (type(tpitem) is str and tpitem.isdigit()) or type(tpitem) is int:
