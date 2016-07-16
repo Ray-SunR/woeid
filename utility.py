@@ -8,6 +8,19 @@ from xml.etree import ElementTree as ET
 
 __author__ = 'Renchen'
 import urlparse
+
+class ResponseCheck:
+    def __init__(self,
+                 code):
+        if code == 400:
+            raise error.WoeidError("The appid parameter was invalid or not specified. or the q filter was missing or incorrectly specified for this resource.")
+
+        if code == 404:
+            raise error.WoeidError("The URI has no match in the display map")
+
+        if code ==406:
+            raise error.WoeidError("The requested representation is not available for this resource")
+
 class Utility:
     @staticmethod
     def BuildUrls(url,
@@ -16,7 +29,8 @@ class Utility:
               extra_woeid=None,
               filters=None,
               relationships=None,
-              count=None):
+              count=None,
+              start=None):
         (scheme, netloc, path, params, query, fragment) = urlparse.urlparse(url)
 
         # Add any additional path elements to the path
@@ -48,6 +62,9 @@ class Utility:
 
         if type(count) is int:
             path += ';count=%s'%str(count)
+
+        if type(start) is int:
+            path += ';start=%s'%str(start)
         # Return the rebuilt URL
         return urlparse.urlunparse((scheme, netloc, path, params, query, fragment))
 
@@ -87,15 +104,12 @@ class Utility:
         ret = {}
         try:
             response = requests.get(url)
-            if response.status_code != 200:
-                raise error.WoeidError("Error on non-200 response code. Details: %s"%response.reason)
-            else:
-                ret = response.text
-                return ret
+            check = ResponseCheck(response.status_code)
+            ret = response.text
         except error.WoeidError as e:
             print(e.message)
             return ret
-
+        return ret
 
     @staticmethod
     def PrettyPrintResult(str):
@@ -103,7 +117,7 @@ class Utility:
             return
         str = str.encode('utf8')
         try:
-            print(json.dumps(json.loads(str), indent=4, separators={',',': '}))
+            print(json.dumps(json.loads(str), indent=4, separators={',',': '}, ensure_ascii=False).encode('utf8'))
         except TypeError as e:
             pass
         except ValueError as e:

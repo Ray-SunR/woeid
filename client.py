@@ -5,13 +5,17 @@ import api
 
 def main(args=None):
     myapi = api.Api(appid=config.key,select='long',format='xml')
+    myapi.Lang = 'zh-hans-CN'
+    myapi.Select = 'short'
+    myapi.Format = 'json'
+    myapi.Count = 5
 
     '''Example 8. Retrieving the Most Likely Place for a Given Place Name'''
     api.PrettyPrintResult(myapi.GetPlaces(q='SFO'))
 
     '''Example 9. Retrieving the Five Most Likely Places for a Given Placename'''
-    myapi._lang = 'zh-Hans'
-    api.PrettyPrintResult(myapi.GetPlaces(q=u'中国',count=5))
+    myapi.__lang = 'zh-Hans'
+    api.PrettyPrintResult(myapi.GetPlaces(q=u'中国'))
 
     '''Example 10. Retrieving All Places for a Given Place Name and Place Type'''
     api.PrettyPrintResult(myapi.GetPlaces(q='Long Island',typ=22,nd=True))
@@ -23,15 +27,15 @@ def main(args=None):
     api.PrettyPrintResult(myapi.GetPlace(woeid=2507854))
 
     '''Example 13. Retrieving a Place with a Given WOEID, in Short Representation'''
-    myapi._select = 'short'
+    myapi.__select = 'short'
     api.PrettyPrintResult(myapi.GetPlace(woeid=2507854))
 
     '''Example 14. Retrieving a Place with a Given WOEID, in JSON format'''
-    myapi._format = 'json'
+    myapi.__format = 'json'
     api.PrettyPrintResult(myapi.GetPlace(woeid=12521721))
 
     '''Example 15. Retrieving the Parent Place of a Given WOEID, as a Long Representation'''
-    myapi._select = 'long'
+    myapi.__select = 'long'
     api.PrettyPrintResult(myapi.GetPlace(woeid=638242, parent=True))
 
     '''Example 16. Retrieving the Ancestors for a Given WOEID'''
@@ -74,7 +78,7 @@ def main(args=None):
     api.PrettyPrintResult(myapi.GetSeas())
 
     '''Example 29. Retrieving the Seas Adjacent to or Part of the Pacific Ocean'''
-    myapi._select='short'
+    myapi.__select='short'
     api.PrettyPrintResult(myapi.GetSeas(place='Pacific Ocean'))
 
     '''Example 30. Retrieving All Countries'''
@@ -99,11 +103,11 @@ def main(args=None):
     api.PrettyPrintResult(myapi.GetPlacetypes())
 
     '''Example 37. Retrieving a Collection of Place Types and Their Descriptions'''
-    myapi._select = 'long'
+    myapi.__select = 'long'
     api.PrettyPrintResult(myapi.GetPlacetypes())
 
     '''Example 38. Retrieving a Partial Collection of Place Types'''
-    myapi._select = 'short'
+    myapi.__select = 'short'
     api.PrettyPrintResult(myapi.GetPlacetypes(typ=[0,2,22,37,38,15,16]))
 
     '''Example 39. Retrieving All Placetypes for Spain'''
@@ -113,7 +117,7 @@ def main(args=None):
     api.PrettyPrintResult(myapi.GetPlacetypes(typ=35))
 
     '''Example 41. Retrieving a Long Representation of the Resource for a Place Type'''
-    myapi._select = 'long'
+    myapi.__select = 'long'
     api.PrettyPrintResult(myapi.GetPlacetypes(typ=35))
 
     '''Example 42. Retrieving the Province Placetype for Spain'''

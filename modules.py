@@ -100,7 +100,6 @@ class Filters:
         # work on .type filter
         if 'type' in self._filters:
             tpitem = self._filters['type']
-            # TODO: add check for api type because `.type(list)` filter can only apply to /places resources
             if type(tpitem) is list:
                 for item in tpitem:
                     if (type(item) is str and item.isdigit()) or type(item) is int:
@@ -132,7 +131,6 @@ class Filters:
             if conda and condb:
                 andstr = '$and(%s,%s)'%(conda,condb)
 
-        # TODO: add check for api type because `$and` filter can only apply to /places resources
         if andstr:
             return andstr
 
