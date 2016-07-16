@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 __author__ = 'Renchen'
-import config
+from woeid.test import config
 import api
 
 def main(args=None):
