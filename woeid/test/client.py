@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 __author__ = 'Renchen'
 from woeid.test import config
-import api
+from woeid import api
 
 def main(args=None):
     myapi = api.Api(appid=config.key,select='long',format='xml')
