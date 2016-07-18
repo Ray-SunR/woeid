@@ -1,0 +1,404 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Modules Documentation &mdash; woeid 1 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="woeid 1 documentation" href="index.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> woeid
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <!-- Local TOC -->
+                <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">Modules Documentation</a><ul>
+<li><a class="reference internal" href="#module-woeid.api">API</a></li>
+<li><a class="reference internal" href="#module-woeid.modules">Models</a></li>
+<li><a class="reference internal" href="#module-woeid.utility">Utilities</a></li>
+</ul>
+</li>
+</ul>
+</div>
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">woeid</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>Modules Documentation</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/woeid.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="modules-documentation">
+<h1>Modules Documentation<a class="headerlink" href="#modules-documentation" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="module-woeid.api">
+<span id="api"></span><h2>API<a class="headerlink" href="#module-woeid.api" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="woeid.api.Api">
+<em class="property">class </em><code class="descclassname">woeid.api.</code><code class="descname">Api</code><span class="sig-paren">(</span><em>appid</em>, <em>select='long'</em>, <em>format='json'</em>, <em>lang='en-us'</em>, <em>count=0</em>, <em>start=0</em><span class="sig-paren">)</span><a class="headerlink" href="#woeid.api.Api" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<dl class="attribute">
+<dt id="woeid.api.Api.AppId">
+<code class="descname">AppId</code><a class="headerlink" href="#woeid.api.Api.AppId" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="woeid.api.Api.BaseUrl">
+<code class="descname">BaseUrl</code><a class="headerlink" href="#woeid.api.Api.BaseUrl" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="woeid.api.Api.Count">
+<code class="descname">Count</code><a class="headerlink" href="#woeid.api.Api.Count" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="woeid.api.Api.Format">
+<code class="descname">Format</code><a class="headerlink" href="#woeid.api.Api.Format" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="woeid.api.Api.GetConcordance">
+<code class="descname">GetConcordance</code><span class="sig-paren">(</span><em>namespace</em>, <em>id</em><span class="sig-paren">)</span><a class="headerlink" href="#woeid.api.Api.GetConcordance" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="woeid.api.Api.GetContinents">
+<code class="descname">GetContinents</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#woeid.api.Api.GetContinents" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="woeid.api.Api.GetCounties">
+<code class="descname">GetCounties</code><span class="sig-paren">(</span><em>state=None</em><span class="sig-paren">)</span><a class="headerlink" href="#woeid.api.Api.GetCounties" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="woeid.api.Api.GetCountries">
+<code class="descname">GetCountries</code><span class="sig-paren">(</span><em>place=None</em><span class="sig-paren">)</span><a class="headerlink" href="#woeid.api.Api.GetCountries" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="woeid.api.Api.GetDistricts">
+<code class="descname">GetDistricts</code><span class="sig-paren">(</span><em>county=None</em><span class="sig-paren">)</span><a class="headerlink" href="#woeid.api.Api.GetDistricts" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="woeid.api.Api.GetOceans">
+<code class="descname">GetOceans</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#woeid.api.Api.GetOceans" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="woeid.api.Api.GetPlace">
+<code class="descname">GetPlace</code><span class="sig-paren">(</span><em>woeid</em>, <em>degree=None</em>, <em>typ=None</em>, <em>nd=None</em>, <em>parent=False</em>, <em>ancestors=False</em>, <em>belongtos=False</em>, <em>neighbors=False</em>, <em>children=False</em>, <em>siblings=False</em>, <em>descendants=False</em>, <em>common=False</em><span class="sig-paren">)</span><a class="headerlink" href="#woeid.api.Api.GetPlace" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="woeid.api.Api.GetPlaces">
+<code class="descname">GetPlaces</code><span class="sig-paren">(</span><em>q=None</em>, <em>woeid=None</em>, <em>typ=None</em>, <em>nd=None</em><span class="sig-paren">)</span><a class="headerlink" href="#woeid.api.Api.GetPlaces" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a collection of places that match a specified place name, and optionally, a specified place type. The resources in the collection are long representations of each place (unless short representations are explicitly requested).
+Supported Filters</p>
+<blockquote>
+<div>.q
+.type
+$and
+.woeid</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="woeid.api.Api.GetPlacetype">
+<code class="descname">GetPlacetype</code><span class="sig-paren">(</span><em>typ</em>, <em>country</em><span class="sig-paren">)</span><a class="headerlink" href="#woeid.api.Api.GetPlacetype" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="woeid.api.Api.GetPlacetypes">
+<code class="descname">GetPlacetypes</code><span class="sig-paren">(</span><em>country=None</em>, <em>typ=None</em><span class="sig-paren">)</span><a class="headerlink" href="#woeid.api.Api.GetPlacetypes" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="woeid.api.Api.GetSeas">
+<code class="descname">GetSeas</code><span class="sig-paren">(</span><em>place=None</em><span class="sig-paren">)</span><a class="headerlink" href="#woeid.api.Api.GetSeas" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="woeid.api.Api.GetStates">
+<code class="descname">GetStates</code><span class="sig-paren">(</span><em>country=None</em><span class="sig-paren">)</span><a class="headerlink" href="#woeid.api.Api.GetStates" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="woeid.api.Api.Lang">
+<code class="descname">Lang</code><a class="headerlink" href="#woeid.api.Api.Lang" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="woeid.api.Api.Select">
+<code class="descname">Select</code><a class="headerlink" href="#woeid.api.Api.Select" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="woeid.api.Api.Start">
+<code class="descname">Start</code><a class="headerlink" href="#woeid.api.Api.Start" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-woeid.modules">
+<span id="models"></span><h2>Models<a class="headerlink" href="#module-woeid.modules" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="woeid.modules.Filters">
+<em class="property">class </em><code class="descclassname">woeid.modules.</code><code class="descname">Filters</code><span class="sig-paren">(</span><em>q=None</em>, <em>woeid=None</em>, <em>typ=None</em>, <em>degree=None</em>, <em>aand=None</em><span class="sig-paren">)</span><a class="headerlink" href="#woeid.modules.Filters" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="woeid.modules.Filters.HasAnd">
+<code class="descname">HasAnd</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#woeid.modules.Filters.HasAnd" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="woeid.modules.Filters.HasDegree">
+<code class="descname">HasDegree</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#woeid.modules.Filters.HasDegree" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="woeid.modules.Filters.HasQ">
+<code class="descname">HasQ</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#woeid.modules.Filters.HasQ" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="woeid.modules.Filters.HasType">
+<code class="descname">HasType</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#woeid.modules.Filters.HasType" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="woeid.modules.Filters.HasWoeid">
+<code class="descname">HasWoeid</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#woeid.modules.Filters.HasWoeid" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="woeid.modules.Filters.IsValid">
+<code class="descname">IsValid</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#woeid.modules.Filters.IsValid" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="woeid.modules.Relationships">
+<em class="property">class </em><code class="descclassname">woeid.modules.</code><code class="descname">Relationships</code><span class="sig-paren">(</span><em>parent=False</em>, <em>ancestors=False</em>, <em>belongstos=False</em>, <em>neighbors=False</em>, <em>siblings=False</em>, <em>children=False</em>, <em>descendants=False</em>, <em>common=False</em><span class="sig-paren">)</span><a class="headerlink" href="#woeid.modules.Relationships" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="woeid.modules.Relationships.Validate">
+<code class="descname">Validate</code><span class="sig-paren">(</span><em>filters</em><span class="sig-paren">)</span><a class="headerlink" href="#woeid.modules.Relationships.Validate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-woeid.utility">
+<span id="utilities"></span><h2>Utilities<a class="headerlink" href="#module-woeid.utility" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="woeid.utility.ResponseCheck">
+<em class="property">class </em><code class="descclassname">woeid.utility.</code><code class="descname">ResponseCheck</code><span class="sig-paren">(</span><em>code</em><span class="sig-paren">)</span><a class="headerlink" href="#woeid.utility.ResponseCheck" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="class">
+<dt id="woeid.utility.Utility">
+<em class="property">class </em><code class="descclassname">woeid.utility.</code><code class="descname">Utility</code><a class="headerlink" href="#woeid.utility.Utility" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="staticmethod">
+<dt id="woeid.utility.Utility.BuildParams">
+<em class="property">static </em><code class="descname">BuildParams</code><span class="sig-paren">(</span><em>appid</em>, <em>format='json'</em>, <em>select='short'</em>, <em>lang='en-us'</em><span class="sig-paren">)</span><a class="headerlink" href="#woeid.utility.Utility.BuildParams" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="woeid.utility.Utility.BuildUrls">
+<em class="property">static </em><code class="descname">BuildUrls</code><span class="sig-paren">(</span><em>url</em>, <em>path_elements</em>, <em>extra_params=None</em>, <em>extra_woeid=None</em>, <em>filters=None</em>, <em>relationships=None</em>, <em>count=None</em>, <em>start=None</em><span class="sig-paren">)</span><a class="headerlink" href="#woeid.utility.Utility.BuildUrls" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="woeid.utility.Utility.EncodeParameters">
+<em class="property">static </em><code class="descname">EncodeParameters</code><span class="sig-paren">(</span><em>parameters</em><span class="sig-paren">)</span><a class="headerlink" href="#woeid.utility.Utility.EncodeParameters" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a string in key=value&amp;key=value form.
+Values of None are not included in the output string.
+Args:</p>
+<blockquote>
+<div>parameters (dict): dictionary of query parameters to be converted into a
+string for encoding and sending to Twitter.</div></blockquote>
+<dl class="docutils">
+<dt>Returns:</dt>
+<dd>A URL-encoded string in &#8220;key=value&amp;key=value&#8221; form</dd>
+</dl>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="woeid.utility.Utility.MakeRequest">
+<em class="property">static </em><code class="descname">MakeRequest</code><span class="sig-paren">(</span><em>url</em><span class="sig-paren">)</span><a class="headerlink" href="#woeid.utility.Utility.MakeRequest" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="woeid.utility.Utility.PrettyPrintResult">
+<em class="property">static </em><code class="descname">PrettyPrintResult</code><span class="sig-paren">(</span><em>str</em><span class="sig-paren">)</span><a class="headerlink" href="#woeid.utility.Utility.PrettyPrintResult" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, Renchen Sun.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
