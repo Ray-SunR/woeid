@@ -1,18 +1,39 @@
-import error
 
-__author__ = 'Renchen'
-from modules import(
-    Filters,
-    Relationships,
-)
+#!/usr/bin/env python
+
+#
+#
+# Copyright 2016 Renchen Sun.
+#
+# Licensed under the The MIT License (MIT) Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+# https://opensource.org/licenses/MIT
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+"""A library that provides a Python interface to the Yahoo GeoPlanet API"""
+
+from woeid import (WoeidError, Filters, Relationships, MakeRequest, BuildParams, BuildUrls)
 from urllib import quote
-from utility import Utility
-BuildParams = Utility.BuildParams
-BuildUrls = Utility.BuildUrls
-MakeRequest = Utility.MakeRequest
-PrettyPrintResult = Utility.PrettyPrintResult
 
 class Api(object):
+    """A python interface into the Woeid API
+     Example usage:
+         To create an instance of the woeid.Api class
+
+         >>> import woeid
+         >>> api = woeid.Api(appid='YOUR_APPID')
+
+         To retrie the Most Likely Place for a Given Place Name, eg SFO'
+        places = api.GetPlaces(q='SFO')
+        print(places)
+    """
     def __init__(self,
                  appid,
                  select='long',
@@ -37,7 +58,7 @@ class Api(object):
         try:
             self.__base_url = str(url)
         except ValueError:
-            raise error.WoeidError("Expect a string type for url")
+            raise WoeidError("Expect a string type for url")
 
     @property
     def AppId(self):
@@ -48,7 +69,7 @@ class Api(object):
         try:
             self.__appid = str(appid)
         except ValueError:
-            raise error.WoeidError("Expect a string type for appid")
+            raise WoeidError("Expect a string type for appid")
 
     @property
     def Format(self):
@@ -59,7 +80,7 @@ class Api(object):
         try:
             self.__format = str(format)
         except ValueError:
-            raise error.WoeidError("Expect a string type for format")
+            raise WoeidError("Expect a string type for format")
 
     @property
     def Select(self):
@@ -71,9 +92,9 @@ class Api(object):
             if str(select).lower() == 'short' or str(select).lower() == 'long':
                 self.__select = str(select)
             else:
-                raise error.WoeidError("select can be either 'short' or 'long'")
+                raise WoeidError("select can be either 'short' or 'long'")
         except ValueError:
-            raise error.WoeidError("Expect a string type for select")
+            raise WoeidError("Expect a string type for select")
 
     @property
     def Lang(self):
@@ -84,7 +105,7 @@ class Api(object):
         try:
             self.__lang = str(lang)
         except ValueError:
-            raise error.WoeidError("Expect a stirng type for lang")
+            raise WoeidError("Expect a stirng type for lang")
 
     @property
     def Count(self):
@@ -95,7 +116,7 @@ class Api(object):
         try:
             self.__count = int(count)
         except ValueError:
-            raise error.WoeidError("Expect an integer type for count")
+            raise WoeidError("Expect an integer type for count")
 
     @property
     def Start(self):
@@ -106,7 +127,7 @@ class Api(object):
         try:
             self.__start = int(start)
         except ValueError:
-            raise error.WoeidError("Expect an integer type for start")
+            raise WoeidError("Expect an integer type for start")
 
     def GetPlace(self,
                  woeid,

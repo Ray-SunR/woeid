@@ -1,10 +1,8 @@
 import json
 import urllib
 import requests
-import error
-from modules import Relationships, Filters
+from woeid import (Relationships, Filters, WoeidError)
 import xml.dom.minidom
-from xml.etree import ElementTree as ET
 
 __author__ = 'Renchen'
 import urlparse
@@ -13,13 +11,13 @@ class ResponseCheck:
     def __init__(self,
                  code):
         if code == 400:
-            raise error.WoeidError("The appid parameter was invalid or not specified. or the q filter was missing or incorrectly specified for this resource.")
+            raise WoeidError("The appid parameter was invalid or not specified. or the q filter was missing or incorrectly specified for this resource.")
 
         if code == 404:
-            raise error.WoeidError("The URI has no match in the display map")
+            raise WoeidError("The URI has no match in the display map")
 
         if code ==406:
-            raise error.WoeidError("The requested representation is not available for this resource")
+            raise WoeidError("The requested representation is not available for this resource")
 
 class Utility:
     @staticmethod
@@ -82,7 +80,7 @@ class Utility:
         if parameters is None:
             return None
         if not isinstance(parameters, dict):
-            raise error.WoeidError("`parameters` must be a dict.")
+            raise WoeidError("`parameters` must be a dict.")
         else:
             return urllib.urlencode(dict((k, v) for k, v in parameters.items() if v is not None))
 
@@ -106,7 +104,7 @@ class Utility:
             response = requests.get(url)
             check = ResponseCheck(response.status_code)
             ret = response.text
-        except error.WoeidError as e:
+        except WoeidError as e:
             print(e.message)
             return ret
         return ret

@@ -1,5 +1,5 @@
 import urllib
-import error
+from woeid import WoeidError
 
 __author__ = 'Renchen'
 
@@ -78,7 +78,7 @@ class Filters:
                 # Focus can be either an ISO-3166-1 country code or a WOEID.
                 qstr += urllib.quote(stra + ',' + strb)
             else:
-                raise error.WoeidError("Unexpected usage of function! query filter is %s"%self._filters['q'])
+                raise WoeidError("Unexpected usage of function! query filter is %s"%self._filters['q'])
             qstr = '.q(%s)'%qstr
 
         # work on .woeid filter
@@ -92,7 +92,7 @@ class Filters:
             elif type(self._filters['woeid']) is list and len(self._filters['woeid']) == 1:
                 woeidstr = '/' + urllib.quote(self._filters['woeid'][0])
             else:
-                raise error.WoeidError("Unexpected usage of function! query filter is %s"%self._filters['woeid'])
+                raise WoeidError("Unexpected usage of function! query filter is %s"%self._filters['woeid'])
             #.woeid can be omitted if there is only one item
             if ',' in woeidstr:
                 woeidstr = '.woeid(%s)'%woeidstr
@@ -189,37 +189,37 @@ class Relationships:
 
     def Validate(self, filters):
         if type(filters) is not Filters:
-            raise error.WoeidError("Unexpected modules usage: %s"%"Validate takes a Filters object as its argument")
+            raise WoeidError("Unexpected modules usage: %s"%"Validate takes a Filters object as its argument")
 
         if not filters.IsValid():
-            raise error.WoeidError("Unexpected API usage: %s"%"filters should be a dictionary")
+            raise WoeidError("Unexpected API usage: %s"%"filters should be a dictionary")
 
         ''' /parent, /ancestors, /siblings, /common/ don't support any filters'''
         if self._parent and filters.keys():
-            raise error.WoeidError("Unexpected API usage: %s"%"woeid/parent doesn't support filters")
+            raise WoeidError("Unexpected API usage: %s"%"woeid/parent doesn't support filters")
 
         if self._ancestors and filters.keys():
-            raise error.WoeidError("Unexpected API usage: %s"%"woeid/ancestors doesn't support filters")
+            raise WoeidError("Unexpected API usage: %s"%"woeid/ancestors doesn't support filters")
 
         if self._siblings and filters.keys():
-            raise error.WoeidError("Unexpected API usage: %s"%"woeid/siblings doesn't support filters")
+            raise WoeidError("Unexpected API usage: %s"%"woeid/siblings doesn't support filters")
 
         if self._common and filters.keys():
-            raise error.WoeidError("Unexpected API usage: %s"%"woeid1/common/woeid2 doesn't support filters")
+            raise WoeidError("Unexpected API usage: %s"%"woeid1/common/woeid2 doesn't support filters")
 
         '''/belongtos and /descendants and /children support .type filter'''
         if self._belongtos and (filters.HasAnd() or filters.HasDegree() or filters.HasQ() or filters.HasWoeid()):
-            raise error.WoeidError("Unexpected API usage: %s"%"woeid/belongtos supports .type filter only")
+            raise WoeidError("Unexpected API usage: %s"%"woeid/belongtos supports .type filter only")
 
         if self._descendants and (filters.HasAnd() or filters.HasDegree() or filters.HasQ() or filters.HasWoeid()):
-            raise error.WoeidError("Unexpected API usage: %s"%"woeid/descendants supports .type filter only")
+            raise WoeidError("Unexpected API usage: %s"%"woeid/descendants supports .type filter only")
 
         if self._children and (filters.HasWoeid() or filters.HasQ() or filters.HasAnd()):
-            raise error.WoeidError("Unexpected API usage: %s"%"woeid/children supports .degree or .type filters only")
+            raise WoeidError("Unexpected API usage: %s"%"woeid/children supports .degree or .type filters only")
 
         '''/neighbors support .degree filter'''
         if self._neighbors and (filters.HasWoeid() or filters.HasType() or filters.HasQ() or filters.HasAnd()):
-            raise error.WoeidError("Unexpected API usage: %s"%"woeid/neighbors supports .degree filter only")
+            raise WoeidError("Unexpected API usage: %s"%"woeid/neighbors supports .degree filter only")
 
 
 
