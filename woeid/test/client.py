@@ -5,7 +5,7 @@ import config
 
 
 def main(args=None):
-    api = woeid.Api(appid=config.key,select='long',format='xml')
+    api = woeid.Api(client_id=config.key,select='long',format='xml')
     api.Lang = 'zh-hans-CN'
     api.Select = 'short'
     api.Format = 'json'
