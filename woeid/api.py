@@ -211,10 +211,21 @@ class Api(object):
             nd(boolean, optional):
                 `$and` specifier which is used to join two fitlers together.
             parent(boolean, optional):
-                Parent specifier used to return a parent place of a given woeid.
+                A relationship specifier used to return a parent place of a given woeid.
             ancestors(boolean, optional):
-                Ancestor specifier used to return one or more acestors of a place of a given woeid.
-
+                A relationship specifier used to return one or more acestors of a place of a given woeid.
+            belongtos(boolean, optional):
+                A relationship specifier used to return a collection of places that have a place as a child or descendant (child of a child).
+            neighbors(boolean, optional):
+                A relationship specifier used to return a collection of places that neighbor of a place.
+            children(boolean, optional):
+                A relationship specifier used to return a collection of places that are children of a place.
+            siblings(boolean, optional):
+                A relationship specifier used to return a collection of places that are siblings of a place.
+            descendants(boolean, optional):
+                A relationship specifier used to return a collection of places that are in the child hierarchy (the child, the child of child, etc).
+            common(boolean, optional):
+                A relationship specifier used to return the common ancestor of both places.
         """
         if type(woeid) == int:
             extra_paths = ['place/' + str(woeid)]
@@ -253,12 +264,22 @@ class Api(object):
                   nd=None):
 
         '''
-        Returns a collection of places that match a specified place name, and optionally, a specified place type. The resources in the collection are long representations of each place (unless short representations are explicitly requested).
-        Supported Filters
-            .q
-            .type
-            $and
-            .woeid
+        Returns a collection of places that match a specified place name, and optionally, a specified place type. The resources in the collection are long representations of each place (unless short representations are explicitly requested).Supported Filters `.q`, `.type`, `$and`, `.woeid`.
+
+        Args:
+            q(str or tuple, optional):
+                Specify a place name to search for or a tuple that has a place name and a focus. This filter is mutually exclusive with the `woeid` filter. The specified place can be any unicode characters. Focus can be either an ISO-3166-1 country code or a WOEID. For a "startswith" filter, specify the place as a string followed by an asterisk (*).
+            woeid(list(str) or list(int), optional):
+                Specify a `Where On Earth Identifier` (`woeid`). Up to ten WOEIDs may be specified. This filter is mutually exclusive with the `q` filter. Example: woeid=(1,2,3)
+            typ(list(str) or list(int) or int, optional):
+                Specify one or more place type codes (https://developer.yahoo.com/geo/geoplanet/guide/concepts.html#placetypes). Up to ten place type codes or names may be provided.
+            nd(boolean, optional):
+                Specify a join operations on two filters. Example:
+
+                 >>> import woeid
+                 >>> api = woeid.Api(client_id='YOUR_CLIENT_ID')
+                 >>> ret = api.GetPlaces(q='StringField', typ=22, nd=True)
+
         '''
         filters = Filters(q=q, woeid=woeid, typ=typ, aand=nd)
         extra_paths = ['places']
@@ -299,40 +320,89 @@ class Api(object):
         return MakeRequest(url)
 
     def GetContinents(self):
+        """Returns a collection of places that are continents.
+        """
         return self.__GetHelper('continents')
 
     def GetOceans(self):
+        """Returns a collection of places that are oceans.
+        """
         return self.__GetHelper('oceans')
 
     def GetSeas(self,
                 place=None):
+        """Returns a collection of places that are seas if `place` is not provided. Returns a collection of places that are seas and are part of or adjacent to the specified continent or ocean if `place` is specified.
+
+        Args:
+            place(str, optional):
+        """
         return self.__GetHelper('seas', place=place)
 
     def GetCountries(self,
                      place=None):
+        """Returns a collection of places that are countries if `place` is not provided. Returns a collection of places that are countries and are part of or adjacent to the specified continent or ocean.
+
+        Args:
+            place(str, optional):
+                A place string
+        """
         return self.__GetHelper('countries', place=place)
 
     def GetStates(self,
-                  country=None):
+                  country):
+        """ Returns a collection of places that are top-level administrative areas (states) within a country.
+
+        Args:
+            country(str):
+                A country string
+        """
         return self.__GetHelper('states', place=country)
 
     def GetCounties(self,
-                    state=None):
+                    state):
+        """Returns a collection of places that are second-level administrative areas (counties) within a top-level administrative area (state).
+
+        Args:
+            state(str):
+                A state string.
+        """
         return self.__GetHelper('counties', place=state)
 
     def GetDistricts(self,
-                     county=None):
+                     county):
+        """Returns a collection of places that are third-level administrative areas (districts) within a second-level administrative area (county).
+
+        Args:
+            county(str):
+                A county string
+        """
         return self.__GetHelper('districts', place=county)
 
     def GetConcordance(self,
                        namespace,
                        id):
+        """Returns information that maps dentifiers (codes) from other providers to WOEIDs. The supported namespace and id values are provided in https://developer.yahoo.com/geo/geoplanet/guide/api-reference.html#api-concordance
+
+        Args:
+            namespace(str):
+                A namespace string
+            id(str):
+                An id string
+        """
         paths = ['concordance', namespace, id]
         return self.__GetHelper(paths)
 
     def GetPlacetypes(self,
                       country=None,
                       typ=None):
+        """Returns the complete collection of place types supported in GeoPlanet if neither `country` or `typ` is specified. Returns information about all the known placetypes. The placetype name returned will be country-specific, and may vary upon the language requested if country is specified.
+
+        Args:
+            country(str, optional):
+                A country code string
+            typ(str or list or int, optional):
+                A type filter.
+        """
         filters = Filters(typ=typ)
         paths = ['placetypes']
         paths.append(country)
@@ -341,6 +411,14 @@ class Api(object):
     def GetPlacetype(self,
                      typ,
                      country):
+        """Returns a place type resource if only `typ` is specified. Returns information about a single placetype known by its code. The placetype name returned will be country-specific, and may vary depending upon the language requested.
+
+        Args:
+            typ(str or list or int):
+                A type filter.
+            country(str):
+                A country code string
+        """
         paths = ['placetype']
         typ = str(typ)
         country = str(country)

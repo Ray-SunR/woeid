@@ -13,6 +13,8 @@
 
   
   
+    <link rel="shortcut icon" href="_static/favicon3.png"/>
+  
 
   
 
@@ -52,6 +54,9 @@
             <a href="index.html" class="icon icon-home"> woeid
           
 
+          
+            
+            <img src="_static/logo.png" class="logo" />
           
           </a>
 
@@ -246,32 +251,72 @@
 <dl class="method">
 <dt id="woeid.api.Api.GetConcordance">
 <code class="descname">GetConcordance</code><span class="sig-paren">(</span><em>namespace</em>, <em>id</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/woeid/api.html#Api.GetConcordance"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#woeid.api.Api.GetConcordance" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Returns information that maps dentifiers (codes) from other providers to WOEIDs. The supported namespace and id values are provided in <a class="reference external" href="https://developer.yahoo.com/geo/geoplanet/guide/api-reference.html#api-concordance">https://developer.yahoo.com/geo/geoplanet/guide/api-reference.html#api-concordance</a></p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><dl class="first last docutils">
+<dt>namespace(str):</dt>
+<dd>A namespace string</dd>
+<dt>id(str):</dt>
+<dd>An id string</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="method">
 <dt id="woeid.api.Api.GetContinents">
 <code class="descname">GetContinents</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/woeid/api.html#Api.GetContinents"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#woeid.api.Api.GetContinents" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Returns a collection of places that are continents.</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="woeid.api.Api.GetCounties">
-<code class="descname">GetCounties</code><span class="sig-paren">(</span><em>state=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/woeid/api.html#Api.GetCounties"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#woeid.api.Api.GetCounties" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<code class="descname">GetCounties</code><span class="sig-paren">(</span><em>state</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/woeid/api.html#Api.GetCounties"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#woeid.api.Api.GetCounties" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a collection of places that are second-level administrative areas (counties) within a top-level administrative area (state).</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><dl class="first last docutils">
+<dt>state(str):</dt>
+<dd>A state string.</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="method">
 <dt id="woeid.api.Api.GetCountries">
 <code class="descname">GetCountries</code><span class="sig-paren">(</span><em>place=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/woeid/api.html#Api.GetCountries"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#woeid.api.Api.GetCountries" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Returns a collection of places that are countries if <cite>place</cite> is not provided. Returns a collection of places that are countries and are part of or adjacent to the specified continent or ocean.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><dl class="first last docutils">
+<dt>place(str, optional):</dt>
+<dd>A place string</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="method">
 <dt id="woeid.api.Api.GetDistricts">
-<code class="descname">GetDistricts</code><span class="sig-paren">(</span><em>county=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/woeid/api.html#Api.GetDistricts"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#woeid.api.Api.GetDistricts" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<code class="descname">GetDistricts</code><span class="sig-paren">(</span><em>county</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/woeid/api.html#Api.GetDistricts"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#woeid.api.Api.GetDistricts" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a collection of places that are third-level administrative areas (districts) within a second-level administrative area (county).</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><dl class="first last docutils">
+<dt>county(str):</dt>
+<dd>A county string</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="method">
 <dt id="woeid.api.Api.GetOceans">
 <code class="descname">GetOceans</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/woeid/api.html#Api.GetOceans"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#woeid.api.Api.GetOceans" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Returns a collection of places that are oceans.</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="woeid.api.Api.GetPlace">
@@ -289,9 +334,21 @@
 <dt>nd(boolean, optional):</dt>
 <dd><cite>$and</cite> specifier which is used to join two fitlers together.</dd>
 <dt>parent(boolean, optional):</dt>
-<dd>Parent specifier used to return a parent place of a given woeid.</dd>
+<dd>A relationship specifier used to return a parent place of a given woeid.</dd>
 <dt>ancestors(boolean, optional):</dt>
-<dd>Ancestor specifier used to return one or more acestors of a place of a given woeid.</dd>
+<dd>A relationship specifier used to return one or more acestors of a place of a given woeid.</dd>
+<dt>belongtos(boolean, optional):</dt>
+<dd>A relationship specifier used to return a collection of places that have a place as a child or descendant (child of a child).</dd>
+<dt>neighbors(boolean, optional):</dt>
+<dd>A relationship specifier used to return a collection of places that neighbor of a place.</dd>
+<dt>children(boolean, optional):</dt>
+<dd>A relationship specifier used to return a collection of places that are children of a place.</dd>
+<dt>siblings(boolean, optional):</dt>
+<dd>A relationship specifier used to return a collection of places that are siblings of a place.</dd>
+<dt>descendants(boolean, optional):</dt>
+<dd>A relationship specifier used to return a collection of places that are in the child hierarchy (the child, the child of child, etc).</dd>
+<dt>common(boolean, optional):</dt>
+<dd>A relationship specifier used to return the common ancestor of both places.</dd>
 </dl>
 </dd>
 </dl>
@@ -300,34 +357,84 @@
 <dl class="method">
 <dt id="woeid.api.Api.GetPlaces">
 <code class="descname">GetPlaces</code><span class="sig-paren">(</span><em>q=None</em>, <em>woeid=None</em>, <em>typ=None</em>, <em>nd=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/woeid/api.html#Api.GetPlaces"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#woeid.api.Api.GetPlaces" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns a collection of places that match a specified place name, and optionally, a specified place type. The resources in the collection are long representations of each place (unless short representations are explicitly requested).
-Supported Filters</p>
-<blockquote>
-<div>.q
-.type
-$and
-.woeid</div></blockquote>
+<dd><p>Returns a collection of places that match a specified place name, and optionally, a specified place type. The resources in the collection are long representations of each place (unless short representations are explicitly requested).Supported Filters <cite>.q</cite>, <cite>.type</cite>, <cite>$and</cite>, <cite>.woeid</cite>.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><dl class="first last docutils">
+<dt>q(str or tuple, optional):</dt>
+<dd>Specify a place name to search for or a tuple that has a place name and a focus. This filter is mutually exclusive with the <cite>woeid</cite> filter. The specified place can be any unicode characters. Focus can be either an ISO-3166-1 country code or a WOEID. For a &#8220;startswith&#8221; filter, specify the place as a string followed by an asterisk (*).</dd>
+<dt>woeid(list(str) or list(int), optional):</dt>
+<dd>Specify a <cite>Where On Earth Identifier</cite> (<cite>woeid</cite>). Up to ten WOEIDs may be specified. This filter is mutually exclusive with the <cite>q</cite> filter. Example: woeid=(1,2,3)</dd>
+<dt>typ(list(str) or list(int) or int, optional):</dt>
+<dd>Specify one or more place type codes (<a class="reference external" href="https://developer.yahoo.com/geo/geoplanet/guide/concepts.html#placetypes">https://developer.yahoo.com/geo/geoplanet/guide/concepts.html#placetypes</a>). Up to ten place type codes or names may be provided.</dd>
+<dt>nd(boolean, optional):</dt>
+<dd><p class="first">Specify a join operations on two filters. Example:</p>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">woeid</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">api</span> <span class="o">=</span> <span class="n">woeid</span><span class="o">.</span><span class="n">Api</span><span class="p">(</span><span class="n">client_id</span><span class="o">=</span><span class="s1">&#39;YOUR_CLIENT_ID&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ret</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">GetPlaces</span><span class="p">(</span><span class="n">q</span><span class="o">=</span><span class="s1">&#39;StringField&#39;</span><span class="p">,</span> <span class="n">typ</span><span class="o">=</span><span class="mi">22</span><span class="p">,</span> <span class="n">nd</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="woeid.api.Api.GetPlacetype">
 <code class="descname">GetPlacetype</code><span class="sig-paren">(</span><em>typ</em>, <em>country</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/woeid/api.html#Api.GetPlacetype"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#woeid.api.Api.GetPlacetype" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Returns a place type resource if only <cite>typ</cite> is specified. Returns information about a single placetype known by its code. The placetype name returned will be country-specific, and may vary depending upon the language requested.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><dl class="first last docutils">
+<dt>typ(str or list or int):</dt>
+<dd>A type filter.</dd>
+<dt>country(str):</dt>
+<dd>A country code string</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="method">
 <dt id="woeid.api.Api.GetPlacetypes">
 <code class="descname">GetPlacetypes</code><span class="sig-paren">(</span><em>country=None</em>, <em>typ=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/woeid/api.html#Api.GetPlacetypes"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#woeid.api.Api.GetPlacetypes" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Returns the complete collection of place types supported in GeoPlanet if neither <cite>country</cite> or <cite>typ</cite> is specified. Returns information about all the known placetypes. The placetype name returned will be country-specific, and may vary upon the language requested if country is specified.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><dl class="first last docutils">
+<dt>country(str, optional):</dt>
+<dd>A country code string</dd>
+<dt>typ(str or list or int, optional):</dt>
+<dd>A type filter.</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="method">
 <dt id="woeid.api.Api.GetSeas">
 <code class="descname">GetSeas</code><span class="sig-paren">(</span><em>place=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/woeid/api.html#Api.GetSeas"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#woeid.api.Api.GetSeas" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Returns a collection of places that are seas if <cite>place</cite> is not provided. Returns a collection of places that are seas and are part of or adjacent to the specified continent or ocean if <cite>place</cite> is specified.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd>place(str, optional):</dd>
+</dl>
+</dd></dl>
 
 <dl class="method">
 <dt id="woeid.api.Api.GetStates">
-<code class="descname">GetStates</code><span class="sig-paren">(</span><em>country=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/woeid/api.html#Api.GetStates"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#woeid.api.Api.GetStates" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<code class="descname">GetStates</code><span class="sig-paren">(</span><em>country</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/woeid/api.html#Api.GetStates"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#woeid.api.Api.GetStates" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a collection of places that are top-level administrative areas (states) within a country.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><dl class="first last docutils">
+<dt>country(str):</dt>
+<dd>A country string</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="attribute">
 <dt id="woeid.api.Api.Lang">
