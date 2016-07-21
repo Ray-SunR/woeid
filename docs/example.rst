@@ -6,7 +6,7 @@ Example 1: Create an ``woeid`` api object
 ::
 
     import woeid
-    api = woeid.Api(client*id=`YOUR*CLIENT*ID`, select='long', format='xml')
+    api = woeid.Api(client*id=`YOUR-CLIENT-ID`, select='long', format='xml')
 
     # Specify the requesting language
     api.Lang = 'zh*Hans'
@@ -60,7 +60,7 @@ Example 7: Retrieving a Place with a Given ``woeid``, in `short` Representation
 
 ::
 
-    api.**select = 'short'
+    api.Select = 'short'
     woeid.PrettyPrintResult(api.GetPlace(woeid=2507854))
 
 Example 8: Retrieving the Parent Place of a Given ``woeid``, as a ``long`` Representation
@@ -132,7 +132,7 @@ Example 17. Retrieving the WOEID and FIPs Code for a Given ISO Code'
 
 ::
 
-    woeid.PrettyPrintResult(api.GetConcordance(namespace='iso', id='CA*BC'))
+    woeid.PrettyPrintResult(api.GetConcordance(namespace='iso', id='CA-BC'))
 
 Example 18. Retrieving a Partial Collection of Place Types'
 ***********************************************************

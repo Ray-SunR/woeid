@@ -3,6 +3,7 @@ try:
 except ImportError as e:
 	from urllib.parse import quote
 from woeid import WoeidError
+from six import string_types
 
 __author__ = 'Renchen'
 
@@ -33,20 +34,20 @@ class Filters:
 				 aand=None):
 		filters = {}
 
-		 # q and woeid are mutually exclusive
-		if q and type(q) is str or type(q) is tuple:
+		# q and woeid are mutually exclusive
+		if isinstance(q, string_types) or isinstance(q, tuple):
 			filters['q'] = q
-		elif woeid and type(woeid) is list:
+		elif woeid and isinstance(woeid, list):
 			# Make sure the values are str
-			filters['woeid'] = [str(val) for val in woeid if type(val) is int or type(val) is str]
+			filters['woeid'] = [str(val) for val in woeid if isinstance(val, int) or isinstance(val, string_types)]
 
-		if typ and type(typ) is list or type(typ) is int:
+		if typ and isinstance(typ, list) or isinstance(typ, int):
 			filters['type'] = typ
 
-		if degree and type(degree) is int:
+		if degree and isinstance(degree, int):
 			filters['degree'] = degree
 
-		if aand and type(aand) is bool:
+		if aand and isinstance(aand, bool):
 			filters['and'] = aand
 		self._filters = filters
 
@@ -77,7 +78,7 @@ class Filters:
 		return 'and' in self._filters
 
 	def IsValid(self):
-		return type(self._filters) is dict
+		return isinstance(self._filters, dict)
 
 	def __str__(self):
 		qstr = ''
@@ -87,9 +88,9 @@ class Filters:
 		andstr = ''
 		# work on .q filter
 		if self.HasQ():
-			if type(self._filters['q']) is str:
+			if isinstance(self._filters['q'], string_types):
 				qstr = quote(self._filters['q'].encode('utf-8'))
-			elif type(self._filters['q']) is tuple:
+			elif isinstance(self._filters['q'], tuple):
 				stra = self._filters['q'][0].encode('utf-8')
 				strb = self._filters['q'][1].encode('utf-8')
 				# Second item will be a focus value
@@ -101,13 +102,15 @@ class Filters:
 
 		# work on .woeid filter
 		if self.HasWoeid():
-			if type(self._filters['woeid']) is list and len(self._filters['woeid']) > 1:
+			if isinstance(self._filters['woeid'], list) and len(self._filters[
+			'woeid']) > 1:
 				for item in self._filters['woeid']:
-					if (type(item) is str and item.isdigit()) or type(item) is int:
+					if (isinstance(item, string_types) and item.isdigit()) or isinstance(item, int):
 						woeidstr += quote(item) + ','
 				# tick out the last comma
 				woeidstr = woeidstr[:-1]
-			elif type(self._filters['woeid']) is list and len(self._filters['woeid']) == 1:
+			elif isinstance(self._filters['woeid'], list) and len(
+					self._filters['woeid']) == 1:
 				woeidstr = '/' + quote(self._filters['woeid'][0])
 			else:
 				raise WoeidError("Unexpected usage of function! query filter is %s"%self._filters['woeid'])
@@ -118,13 +121,13 @@ class Filters:
 		# work on .type filter
 		if 'type' in self._filters:
 			tpitem = self._filters['type']
-			if type(tpitem) is list:
+			if isinstance(tpitem, list):
 				for item in tpitem:
-					if (type(item) is str and item.isdigit()) or type(item) is int:
+					if (isinstance(item, string_types) and item.isdigit()) or isinstance(item, int):
 						typestr += quote(str(item)) + ','
 				typestr = typestr[:-1]
 				typestr = '.type(%s)'%typestr
-			elif (type(tpitem) is str and tpitem.isdigit()) or type(tpitem) is int:
+			elif (type(tpitem) is str and tpitem.isdigit()) or isinstance(tpitem, int):
 				typestr = '.type(%s)'%quote(str(tpitem))
 
 		# work on .degree filter
@@ -225,7 +228,7 @@ class Relationships:
 		return ''
 
 	def __Validate(self, filters):
-		if type(filters) is not Filters:
+		if isinstance(filters, Filters):
 			raise WoeidError("Unexpected modules usage: %s"%"Validate takes a Filters object as its argument")
 
 		if not filters.IsValid():

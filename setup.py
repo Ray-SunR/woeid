@@ -13,5 +13,6 @@ setup(
     description='A python REST apis for getting Yahoo GeoPlanet web services (https://developer.yahoo.com/geo/geoplanet/guide/)',
     long_description=open('README.md').read(),
     keywords=['woeid', 'geoplanet', 'yahoo'],
-    package_data={'': ['LICENSE.txt']}
+    package_data={'': ['LICENSE.txt']},
+	install_requires=['requests', 'six']
 )
