@@ -135,6 +135,8 @@ class Utility:
 
 	@staticmethod
 	def MakeRequest(url):
+		"""An utility function for making url request
+		"""
 		print("Making requests on: %s"%url)
 		ret = {}
 		try:
@@ -148,6 +150,8 @@ class Utility:
 
 	@staticmethod
 	def PrettyPrintResult(retstr):
+		"""An utility function for pretty printing the result with indentation and new lines.
+        """
 		if isinstance(retstr, bytes):
 			retstr = retstr.decode()
 		if not retstr:

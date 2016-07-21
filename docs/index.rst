@@ -7,19 +7,24 @@ Welcome to woeid's documentation!
 =================================
 **A Python interface for Yahoo GeoPlanet Web Services REST APIs. Python 2 and 3 are all supported!**
 
-Author: Renchen Sun
-
-Email: <sunrenchen@gmail.com>
-
-Github: <https://github.com/Ray-SunR/>
-
-LinkedIn: <https://ca.linkedin.com/in/renchensun>
++----------+-----------------------------------------+
+|Author    | Renchen Sun                             |
++----------+-----------------------------------------+
+|Email     | sunrenchen@gmail.com                    |
++----------+-----------------------------------------+
+|Github    | https://github.com/Ray-SunR/            |
++----------+-----------------------------------------+
+|LinkedIn  | https://ca.linkedin.com/in/renchensun   |
++----------+-----------------------------------------+
 
 Contents:
 
 .. toctree::
    :maxdepth: 2
 
+   installation.rst
+   getting_started.rst
+   example.rst
    woeid.rst
 
 

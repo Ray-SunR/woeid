@@ -33,7 +33,7 @@
 
   
     <link rel="top" title="woeid 1 documentation" href="index.html"/>
-        <link rel="prev" title="Welcome to woeid’s documentation!" href="index.html"/> 
+        <link rel="prev" title="Examples" href="example.html"/> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -64,7 +64,7 @@
             
             
               <div class="version">
-                0.0.1
+                1.0.0
               </div>
             
           
@@ -86,9 +86,12 @@
             
             
                 <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation &amp; Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="example.html">Examples</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Modules Documentation</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#module-woeid.api">API</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#module-woeid.modules">Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-woeid.modules">Modules</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#module-woeid.utility">Utilities</a></li>
 </ul>
 </li>
@@ -494,34 +497,61 @@
 
 </div>
 <div class="section" id="module-woeid.modules">
-<span id="models"></span><h2>Models<a class="headerlink" href="#module-woeid.modules" title="Permalink to this headline">¶</a></h2>
+<span id="modules"></span><h2>Modules<a class="headerlink" href="#module-woeid.modules" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="woeid.modules.Filters">
 <em class="property">class </em><code class="descclassname">woeid.modules.</code><code class="descname">Filters</code><span class="sig-paren">(</span><em>q=None</em>, <em>woeid=None</em>, <em>typ=None</em>, <em>degree=None</em>, <em>aand=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/woeid/modules.html#Filters"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#woeid.modules.Filters" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="method">
+<dd><p>A class that encapsulates all filters
+Args:</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>q(str or tuple, optional):</dt>
+<dd>Specify a place name to search for or a tuple that has a place name and a focus. This filter is mutually exclusive with the <cite>woeid</cite> filter. The specified place can be any unicode characters. Focus can be either an ISO-3166-1 country code or a WOEID. For a &#8220;startswith&#8221; filter, specify the place as a string followed by an asterisk (*).</dd>
+<dt>woeid(list(str) or list(int), optional):</dt>
+<dd>Specify a <cite>Where On Earth Identifier</cite> (<cite>woeid</cite>). Up to ten WOEIDs may be specified. This filter is mutually exclusive with the <cite>q</cite> filter. Example: woeid=(1,2,3)</dd>
+<dt>typ(list(str) or list(int) or int, optional):</dt>
+<dd>Specify one or more place type codes (<a class="reference external" href="https://developer.yahoo.com/geo/geoplanet/guide/concepts.html#placetypes">https://developer.yahoo.com/geo/geoplanet/guide/concepts.html#placetypes</a>). Up to ten place type codes or names may be provided.</dd>
+<dt>degree(int or str, optional):</dt>
+<dd><cite>.degree</cite> specifier which represents the degree to which two places are neighborhoods. Only consider valid if either <cite>neighbors</cite> or <cite>children</cite> filters are set.</dd>
+<dt>nd(boolean, optional):</dt>
+<dd><p class="first">Specify a join operations on two filters. Example:</p>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">woeid</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">api</span> <span class="o">=</span> <span class="n">woeid</span><span class="o">.</span><span class="n">Api</span><span class="p">(</span><span class="n">client_id</span><span class="o">=</span><span class="s1">&#39;YOUR_CLIENT_ID&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ret</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">GetPlaces</span><span class="p">(</span><span class="n">q</span><span class="o">=</span><span class="s1">&#39;StringField&#39;</span><span class="p">,</span> <span class="n">typ</span><span class="o">=</span><span class="mi">22</span><span class="p">,</span> <span class="n">nd</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</div></blockquote>
+<dl class="method">
 <dt id="woeid.modules.Filters.HasAnd">
 <code class="descname">HasAnd</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/woeid/modules.html#Filters.HasAnd"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#woeid.modules.Filters.HasAnd" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Return if the filter object has <cite>$and</cite> filter</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="woeid.modules.Filters.HasDegree">
 <code class="descname">HasDegree</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/woeid/modules.html#Filters.HasDegree"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#woeid.modules.Filters.HasDegree" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Return if the filter object has <cite>.degree</cite> filter</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="woeid.modules.Filters.HasQ">
 <code class="descname">HasQ</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/woeid/modules.html#Filters.HasQ"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#woeid.modules.Filters.HasQ" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Return if the filter object has <cite>.q</cite> filter.</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="woeid.modules.Filters.HasType">
 <code class="descname">HasType</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/woeid/modules.html#Filters.HasType"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#woeid.modules.Filters.HasType" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Return if the filter object has <cite>.type</cite> filter</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="woeid.modules.Filters.HasWoeid">
 <code class="descname">HasWoeid</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/woeid/modules.html#Filters.HasWoeid"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#woeid.modules.Filters.HasWoeid" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Return if the filter object has <cite>.woeid</cite> filter.</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="woeid.modules.Filters.IsValid">
@@ -533,11 +563,29 @@
 <dl class="class">
 <dt id="woeid.modules.Relationships">
 <em class="property">class </em><code class="descclassname">woeid.modules.</code><code class="descname">Relationships</code><span class="sig-paren">(</span><em>parent=False</em>, <em>ancestors=False</em>, <em>belongstos=False</em>, <em>neighbors=False</em>, <em>siblings=False</em>, <em>children=False</em>, <em>descendants=False</em>, <em>common=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/woeid/modules.html#Relationships"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#woeid.modules.Relationships" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="method">
-<dt id="woeid.modules.Relationships.Validate">
-<code class="descname">Validate</code><span class="sig-paren">(</span><em>filters</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/woeid/modules.html#Relationships.Validate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#woeid.modules.Relationships.Validate" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
+<dd><p>&#8220;A class that encapsulates all relationships</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><dl class="first last docutils">
+<dt>parent(boolean, optional):</dt>
+<dd>A relationship specifier used to return a parent place of a given woeid.</dd>
+<dt>ancestors(boolean, optional):</dt>
+<dd>A relationship specifier used to return one or more acestors of a place of a given woeid.</dd>
+<dt>belongtos(boolean, optional):</dt>
+<dd>A relationship specifier used to return a collection of places that have a place as a child or descendant (child of a child).</dd>
+<dt>neighbors(boolean, optional):</dt>
+<dd>A relationship specifier used to return a collection of places that neighbor of a place.</dd>
+<dt>children(boolean, optional):</dt>
+<dd>A relationship specifier used to return a collection of places that are children of a place.</dd>
+<dt>siblings(boolean, optional):</dt>
+<dd>A relationship specifier used to return a collection of places that are siblings of a place.</dd>
+<dt>descendants(boolean, optional):</dt>
+<dd>A relationship specifier used to return a collection of places that are in the child hierarchy (the child, the child of child, etc).</dd>
+<dt>common(boolean, optional):</dt>
+<dd>A relationship specifier used to return the common ancestor of both places.</dd>
+</dl>
+</dd>
+</dl>
 </dd></dl>
 
 </div>
@@ -546,7 +594,16 @@
 <dl class="class">
 <dt id="woeid.utility.ResponseCheck">
 <em class="property">class </em><code class="descclassname">woeid.utility.</code><code class="descname">ResponseCheck</code><span class="sig-paren">(</span><em>code</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/woeid/utility.html#ResponseCheck"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#woeid.utility.ResponseCheck" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>A utility class reponsible for chekcing the reponse code and raise corresponding error</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><dl class="first last docutils">
+<dt>code(int):</dt>
+<dd>The response code in integer</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="class">
 <dt id="woeid.utility.Utility">
@@ -554,23 +611,49 @@
 <dd><dl class="staticmethod">
 <dt id="woeid.utility.Utility.BuildParams">
 <em class="property">static </em><code class="descname">BuildParams</code><span class="sig-paren">(</span><em>appid</em>, <em>format='json'</em>, <em>select='short'</em>, <em>lang='en-us'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/woeid/utility.html#Utility.BuildParams"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#woeid.utility.Utility.BuildParams" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>For constructing a parameter dictionary.</p>
+</dd></dl>
 
 <dl class="staticmethod">
 <dt id="woeid.utility.Utility.BuildUrls">
 <em class="property">static </em><code class="descname">BuildUrls</code><span class="sig-paren">(</span><em>url</em>, <em>path_elements</em>, <em>extra_params=None</em>, <em>extra_woeid=None</em>, <em>filters=None</em>, <em>relationships=None</em>, <em>count=None</em>, <em>start=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/woeid/utility.html#Utility.BuildUrls"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#woeid.utility.Utility.BuildUrls" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>An utility class reponsible for building the url string</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><dl class="first last docutils">
+<dt>path_elements(list(str)):</dt>
+<dd>A list of paths that will be appended to the base url.</dd>
+<dt>extra_params(dict, optional):</dt>
+<dd>A dictionary representing the parameters for making the url.</dd>
+<dt>extra_woeid(list(int) or list(str), optional):</dt>
+<dd>This is useful when the <cite>common</cite> filter has been set. Aiming for making urls such as
+<cite>1234/common/3456/73923</cite></dd>
+<dt>filters(Filters, optional):</dt>
+<dd>A <cite>Filter</cite> object</dd>
+<dt>relationships(Relationships, optional):</dt>
+<dd>A <cite>Relationship</cite> object</dd>
+<dt>count(int, optional):</dt>
+<dd>Specify the maximum number of results to return. A count of 0 is interpreted as <cite>no maximum</cite> (all resources)</dd>
+<dt>start(int, optional):</dt>
+<dd>Skip the first N results.</dd>
+</dl>
+</dd>
+<dt>Returns:</dt>
+<dd>A valid url containing all queries, filters, parameters.</dd>
+</dl>
+</dd></dl>
 
 <dl class="staticmethod">
 <dt id="woeid.utility.Utility.EncodeParameters">
 <em class="property">static </em><code class="descname">EncodeParameters</code><span class="sig-paren">(</span><em>parameters</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/woeid/utility.html#Utility.EncodeParameters"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#woeid.utility.Utility.EncodeParameters" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return a string in key=value&amp;key=value form.
-Values of None are not included in the output string.
-Args:</p>
-<blockquote>
-<div>parameters (dict): dictionary of query parameters to be converted into a
-string for encoding and sending to Twitter.</div></blockquote>
+<dd><p>Return a string in key=value&amp;key=value form. Values of None are not included in the output string.</p>
 <dl class="docutils">
+<dt>Args:</dt>
+<dd><dl class="first last docutils">
+<dt>parameters (dict):</dt>
+<dd>dictionary of query parameters to be converted into a string for encoding and sending to Twitter.</dd>
+</dl>
+</dd>
 <dt>Returns:</dt>
 <dd>A URL-encoded string in &#8220;key=value&amp;key=value&#8221; form</dd>
 </dl>
@@ -579,12 +662,14 @@ string for encoding and sending to Twitter.</div></blockquote>
 <dl class="staticmethod">
 <dt id="woeid.utility.Utility.MakeRequest">
 <em class="property">static </em><code class="descname">MakeRequest</code><span class="sig-paren">(</span><em>url</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/woeid/utility.html#Utility.MakeRequest"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#woeid.utility.Utility.MakeRequest" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>An utility function for making url request</p>
+</dd></dl>
 
 <dl class="staticmethod">
 <dt id="woeid.utility.Utility.PrettyPrintResult">
-<em class="property">static </em><code class="descname">PrettyPrintResult</code><span class="sig-paren">(</span><em>str</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/woeid/utility.html#Utility.PrettyPrintResult"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#woeid.utility.Utility.PrettyPrintResult" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<em class="property">static </em><code class="descname">PrettyPrintResult</code><span class="sig-paren">(</span><em>retstr</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/woeid/utility.html#Utility.PrettyPrintResult"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#woeid.utility.Utility.PrettyPrintResult" title="Permalink to this definition">¶</a></dt>
+<dd><p>An utility function for pretty printing the result with indentation and new lines.</p>
+</dd></dl>
 
 </dd></dl>
 
@@ -599,7 +684,7 @@ string for encoding and sending to Twitter.</div></blockquote>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
       
-        <a href="index.html" class="btn btn-neutral" title="Welcome to woeid’s documentation!" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="example.html" class="btn btn-neutral" title="Examples" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

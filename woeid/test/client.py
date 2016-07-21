@@ -14,7 +14,7 @@ def main(args=None):
     woeid.PrettyPrintResult(api.GetPlaces(q='SFO'))
 
     '''Example 9. Retrieving the Five Most Likely Places for a Given Placename'''
-    api.__lang = 'zh-Hans'
+    api.Lang = 'zh-Hans'
     woeid.PrettyPrintResult(api.GetPlaces(q=u'中国'))
 
     '''Example 10. Retrieving All Places for a Given Place Name and Place Type'''
@@ -27,15 +27,15 @@ def main(args=None):
     woeid.PrettyPrintResult(api.GetPlace(woeid=2507854))
 
     '''Example 13. Retrieving a Place with a Given WOEID, in Short Representation'''
-    api.__select = 'short'
+    api.Select = 'short'
     woeid.PrettyPrintResult(api.GetPlace(woeid=2507854))
 
     '''Example 14. Retrieving a Place with a Given WOEID, in JSON format'''
-    api.__format = 'json'
+    api.Format = 'json'
     woeid.PrettyPrintResult(api.GetPlace(woeid=12521721))
 
     '''Example 15. Retrieving the Parent Place of a Given WOEID, as a Long Representation'''
-    api.__select = 'long'
+    api.Select = 'long'
     woeid.PrettyPrintResult(api.GetPlace(woeid=638242, parent=True))
 
     '''Example 16. Retrieving the Ancestors for a Given WOEID'''
@@ -103,11 +103,11 @@ def main(args=None):
     woeid.PrettyPrintResult(api.GetPlacetypes())
 
     '''Example 37. Retrieving a Collection of Place Types and Their Descriptions'''
-    api.__select = 'long'
+    api.Select = 'long'
     woeid.PrettyPrintResult(api.GetPlacetypes())
 
     '''Example 38. Retrieving a Partial Collection of Place Types'''
-    api.__select = 'short'
+    api.Select = 'short'
     woeid.PrettyPrintResult(api.GetPlacetypes(typ=[0,2,22,37,38,15,16]))
 
     '''Example 39. Retrieving All Placetypes for Spain'''
@@ -117,7 +117,7 @@ def main(args=None):
     woeid.PrettyPrintResult(api.GetPlacetypes(typ=35))
 
     '''Example 41. Retrieving a Long Representation of the Resource for a Place Type'''
-    api.__select = 'long'
+    api.Select = 'long'
     woeid.PrettyPrintResult(api.GetPlacetypes(typ=35))
 
     '''Example 42. Retrieving the Province Placetype for Spain'''

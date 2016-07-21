@@ -33,7 +33,7 @@
 
   
     <link rel="top" title="woeid 1 documentation" href="#"/>
-        <link rel="next" title="Modules Documentation" href="woeid.html"/> 
+        <link rel="next" title="Installation &amp; Testing" href="installation.html"/> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -64,7 +64,7 @@
             
             
               <div class="version">
-                0.0.1
+                1.0.0
               </div>
             
           
@@ -86,6 +86,9 @@
             
             
                 <ul>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation &amp; Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="example.html">Examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="woeid.html">Modules Documentation</a></li>
 </ul>
 
@@ -133,13 +136,64 @@
             
   <div class="section" id="welcome-to-woeid-s-documentation">
 <h1>Welcome to woeid&#8217;s documentation!<a class="headerlink" href="#welcome-to-woeid-s-documentation" title="Permalink to this headline">¶</a></h1>
-<p><strong>A Python wrapper around Yahoo GeoPlanet Web Services REST APIs.</strong></p>
+<p><strong>A Python interface for Yahoo GeoPlanet Web Services REST APIs. Python 2 and 3 are all supported!</strong></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="20%" />
+<col width="80%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Author</td>
+<td>Renchen Sun</td>
+</tr>
+<tr class="row-even"><td>Email</td>
+<td><a class="reference external" href="mailto:sunrenchen&#37;&#52;&#48;gmail&#46;com">sunrenchen<span>&#64;</span>gmail<span>&#46;</span>com</a></td>
+</tr>
+<tr class="row-odd"><td>Github</td>
+<td><a class="reference external" href="https://github.com/Ray-SunR/">https://github.com/Ray-SunR/</a></td>
+</tr>
+<tr class="row-even"><td>LinkedIn</td>
+<td><a class="reference external" href="https://ca.linkedin.com/in/renchensun">https://ca.linkedin.com/in/renchensun</a></td>
+</tr>
+</tbody>
+</table>
 <p>Contents:</p>
 <div class="toctree-wrapper compound">
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation &amp; Testing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#getting-the-code">Getting the code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#running-the-test-code">Running the test code</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="getting_started.html#getting-your-application-tokens">Getting your application tokens</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="example.html">Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="example.html#example-1-create-an-woeid-api-object">Example 1: Create an <code class="docutils literal"><span class="pre">woeid</span></code> api object</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example.html#example-2-retrieving-the-most-likely-place-for-a-given-place-name">Example 2: Retrieving the Most Likely Place for a Given Place Name&#8217;</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example.html#example-3-retrieving-the-five-most-likely-places-for-a-given-placename">Example 3: Retrieving the Five Most Likely Places for a Given Placename&#8217;</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example.html#example-4-retrieving-all-places-for-a-given-place-name-and-placetype">Example 4: Retrieving All Places for a Given <code class="docutils literal"><span class="pre">place</span> <span class="pre">name</span></code> and <code class="docutils literal"><span class="pre">placetype</span></code>&#8216;</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example.html#example-5-retrieving-places-that-have-the-given-woeids">Example 5: Retrieving Places That Have the Given <code class="docutils literal"><span class="pre">woeids</span></code>&#8216;</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example.html#example-6-retrieving-a-place-using-a-given-woeid">Example 6: Retrieving a Place Using a Given <code class="docutils literal"><span class="pre">woeid</span></code>&#8216;</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example.html#example-7-retrieving-a-place-with-a-given-woeid-in-short-representation">Example 7: Retrieving a Place with a Given <code class="docutils literal"><span class="pre">woeid</span></code>, in <cite>short</cite> Representation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example.html#example-8-retrieving-the-parent-place-of-a-given-woeid-as-a-long-representation">Example 8: Retrieving the Parent Place of a Given <code class="docutils literal"><span class="pre">woeid</span></code>, as a <code class="docutils literal"><span class="pre">long</span></code> Representation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example.html#example-9-retrieving-the-ancestors-for-a-given-woeid">Example 9. Retrieving the Ancestors for a Given <code class="docutils literal"><span class="pre">woeid</span></code>&#8216;</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example.html#example-10-retrieving-a-place-that-is-a-common-ancestor-of-two-places">Example 10. Retrieving a Place That is a <code class="docutils literal"><span class="pre">common</span></code> Ancestor of Two Places&#8217;</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example.html#example-11-retrieving-a-place-that-is-common-ancestor-of-three-places">Example 11. Retrieving a Place That is <code class="docutils literal"><span class="pre">common</span></code> Ancestor of Three Places&#8217;</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example.html#example-12-retrieving-all-continents">Example 12. Retrieving All Continents&#8217;</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example.html#example-13-retrieving-the-seas-adjacent-to-or-part-of-the-pacific-ocean">Example 13. Retrieving the Seas Adjacent to or Part of the Pacific Ocean&#8217;</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example.html#example-14-retrieving-the-countries-within-north-america-na">Example 14. Retrieving the Countries Within North America (NA)&#8217;</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example.html#example-15-retrieving-the-states-within-the-united-states-us">Example 15. Retrieving the States Within the United States (US)&#8217;</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example.html#example-16-retrieving-the-districts-of-greater-london">Example 16. Retrieving the Districts of Greater London&#8217;</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example.html#example-17-retrieving-the-woeid-and-fips-code-for-a-given-iso-code">Example 17. Retrieving the WOEID and FIPs Code for a Given ISO Code&#8217;</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example.html#example-18-retrieving-a-partial-collection-of-place-types">Example 18. Retrieving a Partial Collection of Place Types&#8217;</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="woeid.html">Modules Documentation</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="woeid.html#module-woeid.api">API</a></li>
-<li class="toctree-l2"><a class="reference internal" href="woeid.html#module-woeid.modules">Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="woeid.html#module-woeid.modules">Modules</a></li>
 <li class="toctree-l2"><a class="reference internal" href="woeid.html#module-woeid.utility">Utilities</a></li>
 </ul>
 </li>
@@ -148,8 +202,8 @@
 <div class="section" id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
 <p>This library provides a pure Python interface for the <a class="reference external" href="https://developer.yahoo.com/geo/geoplanet/guide/">Yahoo GeoPlanet API</a>. It works with Python 2.7+ and Python 3.</p>
-<p>Yahoo! GeoPlanetTM is designed to bridge the gap between the Real and Virtual worlds by providing the Internet with an open, comprehensive, and intelligent infrastructure for geo-referencing data on Earth’s surface.
-In practical terms, Yahoo! GeoPlanet is a resource for managing all geo-permanent named places on earth. It provides the Geographic Developer Community with the vocabulary and grammar to describe the world&#8217;s geography in an unequivocal, permanent, and language-neutral manner, and is designed to facilitate spatial interoperability and geographic discovery. Developers looking to geo-enable their applications can use GeoPlanet to traverse the spatial hierarchy, identify the geography relevant to their users and their business, and in turn, unambiguously geotag, geotarget, and geolocate data across the Web.</p>
+<p>Yahoo! GeoPlanetTM is designed to bridge the gap between the Real and Virtual worlds by providing the Internet with an open, comprehensive, and intelligent infrastructure for geo-referencing data on Earth’s surface.</p>
+<p>In practical terms, Yahoo! GeoPlanet is a resource for managing all geo-permanent named places on earth. It provides the Geographic Developer Community with the vocabulary and grammar to describe the world&#8217;s geography in an unequivocal, permanent, and language-neutral manner, and is designed to facilitate spatial interoperability and geographic discovery. Developers looking to geo-enable their applications can use GeoPlanet to traverse the spatial hierarchy, identify the geography relevant to their users and their business, and in turn, unambiguously geotag, geotarget, and geolocate data across the Web.</p>
 </div>
 </div>
 <div class="section" id="indices-and-tables">
@@ -168,7 +222,7 @@ In practical terms, Yahoo! GeoPlanet is a resource for managing all geo-permanen
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="woeid.html" class="btn btn-neutral float-right" title="Modules Documentation" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="installation.html" class="btn btn-neutral float-right" title="Installation &amp; Testing" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
     </div>
