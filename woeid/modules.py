@@ -13,19 +13,24 @@ class Filters:
 				 typ=None,
 				 degree=None,
 				 aand=None):
-		'''A user-end initializer for Filter class. Can take in a family selector object
+		"""A class that encapsulates all filters
 		Args:
-			q:
-				The query target. Should be a string or a tuple. [Optional]
-			woeid:
-				The woeid list of ids. Should be a list. [Optional]
+			q(str or tuple, optional):
+				Specify a place name to search for or a tuple that has a place name and a focus. This filter is mutually exclusive with the `woeid` filter. The specified place can be any unicode characters. Focus can be either an ISO-3166-1 country code or a WOEID. For a "startswith" filter, specify the place as a string followed by an asterisk (*).
+			woeid(list(str) or list(int), optional):
+				Specify a `Where On Earth Identifier` (`woeid`). Up to ten WOEIDs may be specified. This filter is mutually exclusive with the `q` filter. Example: woeid=(1,2,3)
+			typ(list(str) or list(int) or int, optional):
+				Specify one or more place type codes (https://developer.yahoo.com/geo/geoplanet/guide/concepts.html#placetypes). Up to ten place type codes or names may be provided.
+			degree(int or str, optional):
+				`.degree` specifier which represents the degree to which two places are neighborhoods. Only consider valid if either `neighbors` or `children` filters are set.
+			nd(boolean, optional):
+				Specify a join operations on two filters. Example:
 
-			typ:
-			degree:
-			aand:
-			family_selector:
+				 >>> import woeid
+				 >>> api = woeid.Api(client_id='YOUR_CLIENT_ID')
+				 >>> ret = api.GetPlaces(q='StringField', typ=22, nd=True)
 
-		'''
+		"""
 		filters = {}
 
 		 # q and woeid are mutually exclusive
@@ -47,18 +52,28 @@ class Filters:
 
 
 	def HasQ(self):
+		"""Return if the filter object has `.q` filter.
+		"""
 		return 'q' in self._filters
 
 	def HasWoeid(self):
+		"""Return if the filter object has `.woeid` filter.
+		"""
 		return 'woeid' in self._filters
 
 	def HasType(self):
+		"""Return if the filter object has `.type` filter
+		"""
 		return 'type' in self._filters
 
 	def HasDegree(self):
+		"""Return if the filter object has `.degree` filter
+		"""
 		return 'degree' in self._filters
 
 	def HasAnd(self):
+		"""Return if the filter object has `$and` filter
+		"""
 		return 'and' in self._filters
 
 	def IsValid(self):
@@ -153,7 +168,26 @@ class Relationships:
 				 children=False,
 				 descendants=False,
 				 common=False):
+		""""A class that encapsulates all relationships
 
+		Args:
+			parent(boolean, optional):
+				A relationship specifier used to return a parent place of a given woeid.
+			ancestors(boolean, optional):
+				A relationship specifier used to return one or more acestors of a place of a given woeid.
+			belongtos(boolean, optional):
+				A relationship specifier used to return a collection of places that have a place as a child or descendant (child of a child).
+			neighbors(boolean, optional):
+				A relationship specifier used to return a collection of places that neighbor of a place.
+			children(boolean, optional):
+				A relationship specifier used to return a collection of places that are children of a place.
+			siblings(boolean, optional):
+				A relationship specifier used to return a collection of places that are siblings of a place.
+			descendants(boolean, optional):
+				A relationship specifier used to return a collection of places that are in the child hierarchy (the child, the child of child, etc).
+			common(boolean, optional):
+				A relationship specifier used to return the common ancestor of both places.
+		"""
 		self._parent=parent
 		self._ancestors=ancestors
 		self._belongtos=belongstos
@@ -190,7 +224,7 @@ class Relationships:
 
 		return ''
 
-	def Validate(self, filters):
+	def __Validate(self, filters):
 		if type(filters) is not Filters:
 			raise WoeidError("Unexpected modules usage: %s"%"Validate takes a Filters object as its argument")
 

@@ -267,7 +267,7 @@ class Api(object):
 				  typ=None,
 				  nd=None):
 
-		'''
+		"""
 		Returns a collection of places that match a specified place name, and optionally, a specified place type. The resources in the collection are long representations of each place (unless short representations are explicitly requested).Supported Filters `.q`, `.type`, `$and`, `.woeid`.
 
 		Args:
@@ -284,7 +284,7 @@ class Api(object):
 				 >>> api = woeid.Api(client_id='YOUR_CLIENT_ID')
 				 >>> ret = api.GetPlaces(q='StringField', typ=22, nd=True)
 
-		'''
+		"""
 		filters = Filters(q=q, woeid=woeid, typ=typ, aand=nd)
 		extra_paths = ['places']
 

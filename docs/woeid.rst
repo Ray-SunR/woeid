@@ -10,7 +10,7 @@ API
     :undoc-members:
     :show-inheritance:
 
-Models
+Modules
 ---------------------
 
 .. automodule:: woeid.modules

@@ -15,6 +15,12 @@ except ImportError:
 
 
 class ResponseCheck:
+	"""A utility class reponsible for chekcing the reponse code and raise corresponding error
+
+	Args:
+		code(int):
+			The response code in integer
+	"""
 	def __init__(self,
 				 code):
 		if code == 400:
@@ -36,6 +42,27 @@ class Utility:
 			  relationships=None,
 			  count=None,
 			  start=None):
+		"""An utility class reponsible for building the url string
+
+		Args:
+			path_elements(list(str)):
+				A list of paths that will be appended to the base url.
+			extra_params(dict, optional):
+				A dictionary representing the parameters for making the url.
+			extra_woeid(list(int) or list(str), optional):
+				This is useful when the `common` filter has been set. Aiming for making urls such as
+				`1234/common/3456/73923`
+			filters(Filters, optional):
+				A `Filter` object
+			relationships(Relationships, optional):
+				A `Relationship` object
+			count(int, optional):
+				Specify the maximum number of results to return. A count of 0 is interpreted as `no maximum` (all resources)
+			start(int, optional):
+				Skip the first N results.
+		Returns:
+			A valid url containing all queries, filters, parameters.
+		"""
 		(scheme, netloc, path, params, query, fragment) = urlparse.urlparse(url)
 
 		# Add any additional path elements to the path
@@ -76,13 +103,14 @@ class Utility:
 
 	@staticmethod
 	def EncodeParameters(parameters):
-		"""Return a string in key=value&key=value form.
-		Values of None are not included in the output string.
+		"""Return a string in key=value&key=value form. Values of None are not included in the output string.
+
 		Args:
-		  parameters (dict): dictionary of query parameters to be converted into a
-		  string for encoding and sending to Twitter.
+			parameters (dict):
+				dictionary of query parameters to be converted into a string for encoding and sending to Twitter.
+
 		Returns:
-		  A URL-encoded string in "key=value&key=value" form
+			A URL-encoded string in "key=value&key=value" form
 		"""
 		if parameters is None:
 			return None
@@ -96,6 +124,8 @@ class Utility:
 					format='json',
 					select='short',
 					lang='en-us'):
+		"""For constructing a parameter dictionary.
+		"""
 		return {
 			'format':format,
 			'appid':appid,

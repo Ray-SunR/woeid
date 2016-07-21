@@ -5,7 +5,12 @@
 
 Welcome to woeid's documentation!
 =================================
-**A Python wrapper around Yahoo GeoPlanet Web Services REST APIs.**
+**A Python interface for Yahoo GeoPlanet Web Services REST APIs. Python 2 and 3 are all supported!**
+
+Author: Renchen Sun
+Email: <sunrenchen@gmail.com>
+Github: <https://github.com/Ray-SunR/>
+LinkedIn: <https://ca.linkedin.com/in/renchensun>
 
 Contents:
 
