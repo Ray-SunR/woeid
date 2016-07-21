@@ -26,6 +26,7 @@ Contents:
    getting_started.rst
    example.rst
    woeid.rst
+   aboutme.rst
 
 
 Introduction
