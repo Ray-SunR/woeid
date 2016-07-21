@@ -1,11 +1,10 @@
 # -*- coding: utf-8 -*-
 __author__ = 'Renchen'
 import woeid
-import config
-
+from config import key
 
 def main(args=None):
-    api = woeid.Api(client_id=config.key,select='long',format='xml')
+    api = woeid.Api(client_id=key, select='long', format='xml')
     api.Lang = 'zh-hans-CN'
     api.Select = 'short'
     api.Format = 'json'
@@ -19,10 +18,10 @@ def main(args=None):
     woeid.PrettyPrintResult(api.GetPlaces(q=u'中国'))
 
     '''Example 10. Retrieving All Places for a Given Place Name and Place Type'''
-    woeid.PrettyPrintResult(api.GetPlaces(q='Long Island',typ=22,nd=True))
+    woeid.PrettyPrintResult(api.GetPlaces(q='Long Island', typ=22, nd=True))
 
     '''Example 11. Retrieving Places That Have the Given WOEIDs'''
-    woeid.PrettyPrintResult(api.GetPlaces(woeid=[2488042,2488836,2486340]))
+    woeid.PrettyPrintResult(api.GetPlaces(woeid=[2488042, 2488836, 2486340]))
 
     '''Example 12. Retrieving a Place Using a Given WOEID'''
     woeid.PrettyPrintResult(api.GetPlace(woeid=2507854))
