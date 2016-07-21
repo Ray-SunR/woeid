@@ -7,13 +7,7 @@ from woeid import WoeidError
 __author__ = 'Renchen'
 
 class Filters:
-	def __init__(self,
-				 q=None,
-				 woeid=None,
-				 typ=None,
-				 degree=None,
-				 aand=None):
-		"""A class that encapsulates all filters
+	"""A class that encapsulates all filters
 		Args:
 			q(str or tuple, optional):
 				Specify a place name to search for or a tuple that has a place name and a focus. This filter is mutually exclusive with the `woeid` filter. The specified place can be any unicode characters. Focus can be either an ISO-3166-1 country code or a WOEID. For a "startswith" filter, specify the place as a string followed by an asterisk (*).
@@ -31,6 +25,12 @@ class Filters:
 				 >>> ret = api.GetPlaces(q='StringField', typ=22, nd=True)
 
 		"""
+	def __init__(self,
+				 q=None,
+				 woeid=None,
+				 typ=None,
+				 degree=None,
+				 aand=None):
 		filters = {}
 
 		 # q and woeid are mutually exclusive
@@ -159,16 +159,7 @@ class Filters:
 
 
 class Relationships:
-	def __init__(self,
-				 parent=False,
-				 ancestors=False,
-				 belongstos=False,
-				 neighbors=False,
-				 siblings=False,
-				 children=False,
-				 descendants=False,
-				 common=False):
-		""""A class that encapsulates all relationships
+	""""A class that encapsulates all relationships
 
 		Args:
 			parent(boolean, optional):
@@ -188,6 +179,15 @@ class Relationships:
 			common(boolean, optional):
 				A relationship specifier used to return the common ancestor of both places.
 		"""
+	def __init__(self,
+				 parent=False,
+				 ancestors=False,
+				 belongstos=False,
+				 neighbors=False,
+				 siblings=False,
+				 children=False,
+				 descendants=False,
+				 common=False):
 		self._parent=parent
 		self._ancestors=ancestors
 		self._belongtos=belongstos
