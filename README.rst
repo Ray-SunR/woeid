@@ -4,7 +4,7 @@
    contain the root `toctree` directive.
 
 Welcome to woeid's documentation!
-=================================
+---------------------------------
 **A Python interface for Yahoo GeoPlanet Web Services REST APIs. Python 2 and 3 are all supported!**
 
 .. image:: https://readthedocs.org/projects/woeid/badge/?version=latest
@@ -38,7 +38,7 @@ Contents:
 
 
 Introduction
-============
+------------
 This library provides a pure Python interface for the `Yahoo GeoPlanet API <https://developer.yahoo.com/geo/geoplanet/guide/>`_. It works with Python 2.7+ and Python 3.
 
 Yahoo! GeoPlanetTM is designed to bridge the gap between the Real and Virtual worlds by providing the Internet with an open, comprehensive, and intelligent infrastructure for geo-referencing data on Earth’s surface.
@@ -46,7 +46,7 @@ Yahoo! GeoPlanetTM is designed to bridge the gap between the Real and Virtual wo
 In practical terms, Yahoo! GeoPlanet is a resource for managing all geo-permanent named places on earth. It provides the Geographic Developer Community with the vocabulary and grammar to describe the world's geography in an unequivocal, permanent, and language-neutral manner, and is designed to facilitate spatial interoperability and geographic discovery. Developers looking to geo-enable their applications can use GeoPlanet to traverse the spatial hierarchy, identify the geography relevant to their users and their business, and in turn, unambiguously geotag, geotarget, and geolocate data across the Web.
 
 Installation
-============
+------------
 
 **From PyPI** ::
 
@@ -63,7 +63,7 @@ Extract the source distribution and run::
     $ python setup.py install
 
 Getting the code
-================
+----------------
 
 The code is hosted at `Github` https://github.com/Ray-SunR/woeid
 
@@ -74,7 +74,7 @@ $ cd woeid
 
 
 Testing
-=======
+-------
 
 Navigate into test folder::
  	$ cd test
@@ -84,7 +84,7 @@ and run::
     $ python test.py
 
 Getting your application tokens
-===============================
+-------------------------------
 This section is subject to changes made by Yahoo and may not always be completely up-to-date. If you see something change on their end, please create a `new issue on Github <https://github.com/Ray-SunR/woeid/issues/new>`_ or submit a pull request to update it.
 
 
@@ -120,7 +120,7 @@ At this point, you can test out your application using the ``consumer key`` to i
     api = woeid.Api(client_id=[consumer_key])
 
 Examples
-========
+--------
 
 Example 1: Create an ``woeid`` api object
 *****************************************
