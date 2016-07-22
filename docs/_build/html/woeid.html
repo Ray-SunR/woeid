@@ -33,6 +33,7 @@
 
   
     <link rel="top" title="woeid 1 documentation" href="index.html"/>
+        <link rel="next" title="About me" href="aboutme.html"/>
         <link rel="prev" title="Examples" href="example.html"/> 
 
   
@@ -95,6 +96,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#module-woeid.utility">Utilities</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="aboutme.html">About me</a></li>
 </ul>
 
             
@@ -162,19 +164,19 @@
 </dd>
 <dt>Args:</dt>
 <dd><dl class="first last docutils">
-<dt>client_id(str):</dt>
+<dt>client_id(<code class="docutils literal"><span class="pre">str</span></code>):</dt>
 <dd>Your yahoo client id (consumer key). Note: this is not the id of your app!</dd>
-<dt>base_url(str, optional):</dt>
+<dt>base_url(<code class="docutils literal"><span class="pre">str</span></code>, optional):</dt>
 <dd>Specify the base url for making requests. (You probably wouldn&#8217;t want to change it)</dd>
-<dt>select(str, optional):</dt>
+<dt>select(<code class="docutils literal"><span class="pre">str</span></code>, optional):</dt>
 <dd>Specify how you would like your result to return. Only <cite>short</cite> or <cite>long</cite> are accepted.</dd>
-<dt>format(str, optional):</dt>
+<dt>format(<code class="docutils literal"><span class="pre">str</span></code>, optional):</dt>
 <dd>Specify which format you would like to receive as a response format. Three values are accepted: <cite>json</cite>, <cite>xml</cite>, <cite>geojson</cite>.</dd>
-<dt>lang(str, optional):</dt>
+<dt>lang(<code class="docutils literal"><span class="pre">str</span></code>, optional):</dt>
 <dd>Specify the language you would like the return names to be be shown. RFC 4646 language codes are accepted.</dd>
-<dt>count(str or int, optional):</dt>
+<dt>count(<code class="docutils literal"><span class="pre">str</span></code> or <code class="docutils literal"><span class="pre">int</span></code>, optional):</dt>
 <dd>Specify the maximum number of results to return. A count of 0 is interpreted as <cite>no maximum</cite> (all resources)</dd>
-<dt>start(str or int, optional):</dt>
+<dt>start(<code class="docutils literal"><span class="pre">str</span></code> or <code class="docutils literal"><span class="pre">int</span></code>, optional):</dt>
 <dd>Skip the first N results.</dd>
 </dl>
 </dd>
@@ -191,7 +193,7 @@
 </tr>
 <tr class="field-even field"><th class="field-name">Setter:</th><td class="field-body">Set the base url</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">str</td>
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><code class="docutils literal"><span class="pre">str</span></code></td>
 </tr>
 </tbody>
 </table>
@@ -209,7 +211,7 @@
 </tr>
 <tr class="field-even field"><th class="field-name">Setter:</th><td class="field-body">Set the client id</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">str</td>
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><code class="docutils literal"><span class="pre">str</span></code></td>
 </tr>
 </tbody>
 </table>
@@ -227,7 +229,7 @@
 </tr>
 <tr class="field-even field"><th class="field-name">Setter:</th><td class="field-body">Set the maximum number of results to return. A value of 0 is interpreted as no maximum (all resources)</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">int or str</td>
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><code class="docutils literal"><span class="pre">int</span></code> or <code class="docutils literal"><span class="pre">str</span></code></td>
 </tr>
 </tbody>
 </table>
@@ -245,7 +247,7 @@
 </tr>
 <tr class="field-even field"><th class="field-name">Setter:</th><td class="field-body">Set the response format code. Supported values are: &#8216;json&#8217;, &#8216;xml&#8217;, &#8216;geojson&#8217;</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">str</td>
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><code class="docutils literal"><span class="pre">str</span></code></td>
 </tr>
 </tbody>
 </table>
@@ -258,12 +260,14 @@
 <dl class="docutils">
 <dt>Args:</dt>
 <dd><dl class="first last docutils">
-<dt>namespace(str):</dt>
+<dt>namespace(<code class="docutils literal"><span class="pre">str</span></code>):</dt>
 <dd>A namespace string</dd>
-<dt>id(str):</dt>
+<dt>id(<code class="docutils literal"><span class="pre">str</span></code>):</dt>
 <dd>An id string</dd>
 </dl>
 </dd>
+<dt>Returns:</dt>
+<dd>Response content in <code class="docutils literal"><span class="pre">bytes</span></code></dd>
 </dl>
 </dd></dl>
 
@@ -271,6 +275,10 @@
 <dt id="woeid.api.Api.GetContinents">
 <code class="descname">GetContinents</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/woeid/api.html#Api.GetContinents"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#woeid.api.Api.GetContinents" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a collection of places that are continents.</p>
+<dl class="docutils">
+<dt>Returns:</dt>
+<dd>Response content in <code class="docutils literal"><span class="pre">bytes</span></code></dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -280,10 +288,12 @@
 <dl class="docutils">
 <dt>Args:</dt>
 <dd><dl class="first last docutils">
-<dt>state(str):</dt>
+<dt>state(<code class="docutils literal"><span class="pre">str</span></code>):</dt>
 <dd>A state string.</dd>
 </dl>
 </dd>
+<dt>Returns:</dt>
+<dd>Response content in <code class="docutils literal"><span class="pre">bytes</span></code></dd>
 </dl>
 </dd></dl>
 
@@ -294,10 +304,12 @@
 <dl class="docutils">
 <dt>Args:</dt>
 <dd><dl class="first last docutils">
-<dt>place(str, optional):</dt>
+<dt>place(<code class="docutils literal"><span class="pre">str</span></code>, optional):</dt>
 <dd>A place string</dd>
 </dl>
 </dd>
+<dt>Returns:</dt>
+<dd>Response content in <code class="docutils literal"><span class="pre">bytes</span></code></dd>
 </dl>
 </dd></dl>
 
@@ -308,10 +320,12 @@
 <dl class="docutils">
 <dt>Args:</dt>
 <dd><dl class="first last docutils">
-<dt>county(str):</dt>
+<dt>county(<code class="docutils literal"><span class="pre">str</span></code>):</dt>
 <dd>A county string</dd>
 </dl>
 </dd>
+<dt>Returns:</dt>
+<dd>Response content in <code class="docutils literal"><span class="pre">bytes</span></code></dd>
 </dl>
 </dd></dl>
 
@@ -319,6 +333,10 @@
 <dt id="woeid.api.Api.GetOceans">
 <code class="descname">GetOceans</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/woeid/api.html#Api.GetOceans"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#woeid.api.Api.GetOceans" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a collection of places that are oceans.</p>
+<dl class="docutils">
+<dt>Returns:</dt>
+<dd>Response content in <code class="docutils literal"><span class="pre">bytes</span></code></dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -328,32 +346,34 @@
 <dl class="docutils">
 <dt>Args:</dt>
 <dd><dl class="first last docutils">
-<dt>woeid(str or int or tuple or list):</dt>
+<dt>woeid(<code class="docutils literal"><span class="pre">str</span></code> or <code class="docutils literal"><span class="pre">int</span></code> or <code class="docutils literal"><span class="pre">tuple</span></code> or <code class="docutils literal"><span class="pre">list</span></code>):</dt>
 <dd>The unique place specifier.</dd>
-<dt>degree(int or str, optional):</dt>
+<dt>degree(<code class="docutils literal"><span class="pre">int</span></code> or <code class="docutils literal"><span class="pre">str</span></code>, optional):</dt>
 <dd><cite>.degree</cite> specifier which represents the degree to which two places are neighborhoods. Only consider valid if either <cite>neighbors</cite> or <cite>children</cite> filters are set.</dd>
-<dt>typ(str or int or list, optional):</dt>
+<dt>typ(<code class="docutils literal"><span class="pre">str</span></code> or <code class="docutils literal"><span class="pre">int</span></code> or <code class="docutils literal"><span class="pre">list</span></code>, optional):</dt>
 <dd><cite>.type</cite> specifier which is used to specify placetypes. Up to ten place types may be provided. Only consider valid if either <cite>belongtos</cite>, <cite>children</cite> or <cite>placetypes</cite> are set.</dd>
 <dt>nd(boolean, optional):</dt>
 <dd><cite>$and</cite> specifier which is used to join two fitlers together.</dd>
-<dt>parent(boolean, optional):</dt>
+<dt>parent(<code class="docutils literal"><span class="pre">boolean</span></code>, optional):</dt>
 <dd>A relationship specifier used to return a parent place of a given woeid.</dd>
-<dt>ancestors(boolean, optional):</dt>
+<dt>ancestors(<code class="docutils literal"><span class="pre">boolean</span></code>, optional):</dt>
 <dd>A relationship specifier used to return one or more acestors of a place of a given woeid.</dd>
-<dt>belongtos(boolean, optional):</dt>
+<dt>belongtos(<code class="docutils literal"><span class="pre">boolean</span></code>, optional):</dt>
 <dd>A relationship specifier used to return a collection of places that have a place as a child or descendant (child of a child).</dd>
-<dt>neighbors(boolean, optional):</dt>
+<dt>neighbors(<code class="docutils literal"><span class="pre">boolean</span></code>, optional):</dt>
 <dd>A relationship specifier used to return a collection of places that neighbor of a place.</dd>
-<dt>children(boolean, optional):</dt>
+<dt>children(<code class="docutils literal"><span class="pre">boolean</span></code>, optional):</dt>
 <dd>A relationship specifier used to return a collection of places that are children of a place.</dd>
-<dt>siblings(boolean, optional):</dt>
+<dt>siblings(<code class="docutils literal"><span class="pre">boolean</span></code>, optional):</dt>
 <dd>A relationship specifier used to return a collection of places that are siblings of a place.</dd>
-<dt>descendants(boolean, optional):</dt>
+<dt>descendants(<code class="docutils literal"><span class="pre">boolean</span></code>, optional):</dt>
 <dd>A relationship specifier used to return a collection of places that are in the child hierarchy (the child, the child of child, etc).</dd>
-<dt>common(boolean, optional):</dt>
+<dt>common(<code class="docutils literal"><span class="pre">boolean</span></code>, optional):</dt>
 <dd>A relationship specifier used to return the common ancestor of both places.</dd>
 </dl>
 </dd>
+<dt>Returns:</dt>
+<dd>Response content <code class="docutils literal"><span class="pre">in</span> <span class="pre">``bytes``</span></code></dd>
 </dl>
 </dd></dl>
 
@@ -364,13 +384,13 @@
 <dl class="docutils">
 <dt>Args:</dt>
 <dd><dl class="first last docutils">
-<dt>q(str or tuple, optional):</dt>
+<dt>q(<code class="docutils literal"><span class="pre">str</span></code> or <code class="docutils literal"><span class="pre">tuple</span></code>, optional):</dt>
 <dd>Specify a place name to search for or a tuple that has a place name and a focus. This filter is mutually exclusive with the <cite>woeid</cite> filter. The specified place can be any unicode characters. Focus can be either an ISO-3166-1 country code or a WOEID. For a &#8220;startswith&#8221; filter, specify the place as a string followed by an asterisk (*).</dd>
-<dt>woeid(list(str) or list(int), optional):</dt>
+<dt>woeid(<code class="docutils literal"><span class="pre">list(str)</span></code> or <code class="docutils literal"><span class="pre">list(int)</span></code>, optional):</dt>
 <dd>Specify a <cite>Where On Earth Identifier</cite> (<cite>woeid</cite>). Up to ten WOEIDs may be specified. This filter is mutually exclusive with the <cite>q</cite> filter. Example: woeid=(1,2,3)</dd>
-<dt>typ(list(str) or list(int) or int, optional):</dt>
+<dt>typ(<code class="docutils literal"><span class="pre">list(str)</span></code> or <code class="docutils literal"><span class="pre">list(int)</span></code> or <code class="docutils literal"><span class="pre">int</span></code>, optional):</dt>
 <dd>Specify one or more place type codes (<a class="reference external" href="https://developer.yahoo.com/geo/geoplanet/guide/concepts.html#placetypes">https://developer.yahoo.com/geo/geoplanet/guide/concepts.html#placetypes</a>). Up to ten place type codes or names may be provided.</dd>
-<dt>nd(boolean, optional):</dt>
+<dt>nd(<code class="docutils literal"><span class="pre">boolean</span></code>, optional):</dt>
 <dd><p class="first">Specify a join operations on two filters. Example:</p>
 <div class="last highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">woeid</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">api</span> <span class="o">=</span> <span class="n">woeid</span><span class="o">.</span><span class="n">Api</span><span class="p">(</span><span class="n">client_id</span><span class="o">=</span><span class="s1">&#39;YOUR_CLIENT_ID&#39;</span><span class="p">)</span>
@@ -380,6 +400,8 @@
 </dd>
 </dl>
 </dd>
+<dt>Returns:</dt>
+<dd>Response content in <code class="docutils literal"><span class="pre">bytes</span></code></dd>
 </dl>
 </dd></dl>
 
@@ -390,12 +412,14 @@
 <dl class="docutils">
 <dt>Args:</dt>
 <dd><dl class="first last docutils">
-<dt>typ(str or list or int):</dt>
+<dt>typ(<code class="docutils literal"><span class="pre">str</span></code> or <code class="docutils literal"><span class="pre">list</span></code> or <code class="docutils literal"><span class="pre">int</span></code>):</dt>
 <dd>A type filter.</dd>
-<dt>country(str):</dt>
+<dt>country(<code class="docutils literal"><span class="pre">str</span></code>):</dt>
 <dd>A country code string</dd>
 </dl>
 </dd>
+<dt>Returns:</dt>
+<dd>Response content in <code class="docutils literal"><span class="pre">bytes</span></code></dd>
 </dl>
 </dd></dl>
 
@@ -406,12 +430,14 @@
 <dl class="docutils">
 <dt>Args:</dt>
 <dd><dl class="first last docutils">
-<dt>country(str, optional):</dt>
+<dt>country(<code class="docutils literal"><span class="pre">str</span></code>, optional):</dt>
 <dd>A country code string</dd>
-<dt>typ(str or list or int, optional):</dt>
+<dt>typ(<code class="docutils literal"><span class="pre">str</span></code> or <code class="docutils literal"><span class="pre">list</span></code> or <code class="docutils literal"><span class="pre">int</span></code>, optional):</dt>
 <dd>A type filter.</dd>
 </dl>
 </dd>
+<dt>Returns:</dt>
+<dd>Response content in <code class="docutils literal"><span class="pre">bytes</span></code></dd>
 </dl>
 </dd></dl>
 
@@ -421,7 +447,9 @@
 <dd><p>Returns a collection of places that are seas if <cite>place</cite> is not provided. Returns a collection of places that are seas and are part of or adjacent to the specified continent or ocean if <cite>place</cite> is specified.</p>
 <dl class="docutils">
 <dt>Args:</dt>
-<dd>place(str, optional):</dd>
+<dd>place(<code class="docutils literal"><span class="pre">str</span></code>, optional):</dd>
+<dt>Returns:</dt>
+<dd>Response content in <code class="docutils literal"><span class="pre">bytes</span></code></dd>
 </dl>
 </dd></dl>
 
@@ -432,10 +460,12 @@
 <dl class="docutils">
 <dt>Args:</dt>
 <dd><dl class="first last docutils">
-<dt>country(str):</dt>
+<dt>country(<code class="docutils literal"><span class="pre">str</span></code>):</dt>
 <dd>A country string</dd>
 </dl>
 </dd>
+<dt>Returns:</dt>
+<dd>Response content in <code class="docutils literal"><span class="pre">bytes</span></code></dd>
 </dl>
 </dd></dl>
 
@@ -451,7 +481,7 @@
 </tr>
 <tr class="field-even field"><th class="field-name">Setter:</th><td class="field-body">Set the language code used for making requests. Possible language codes are defined in RFC 4646</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">str</td>
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><code class="docutils literal"><span class="pre">str</span></code></td>
 </tr>
 </tbody>
 </table>
@@ -469,7 +499,7 @@
 </tr>
 <tr class="field-even field"><th class="field-name">Setter:</th><td class="field-body">Set the result representation mode. Supported values are: <cite>long</cite>, <cite>short</cite></td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">str</td>
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><code class="docutils literal"><span class="pre">str</span></code></td>
 </tr>
 </tbody>
 </table>
@@ -487,7 +517,7 @@
 </tr>
 <tr class="field-even field"><th class="field-name">Setter:</th><td class="field-body">Set the number of records to skip</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">int or str</td>
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><code class="docutils literal"><span class="pre">int</span></code> or <code class="docutils literal"><span class="pre">str</span></code></td>
 </tr>
 </tbody>
 </table>
@@ -505,15 +535,15 @@
 Args:</p>
 <blockquote>
 <div><dl class="docutils">
-<dt>q(str or tuple, optional):</dt>
+<dt>q(<code class="docutils literal"><span class="pre">str</span></code> or <code class="docutils literal"><span class="pre">tuple</span></code>, optional):</dt>
 <dd>Specify a place name to search for or a tuple that has a place name and a focus. This filter is mutually exclusive with the <cite>woeid</cite> filter. The specified place can be any unicode characters. Focus can be either an ISO-3166-1 country code or a WOEID. For a &#8220;startswith&#8221; filter, specify the place as a string followed by an asterisk (*).</dd>
-<dt>woeid(list(str) or list(int), optional):</dt>
+<dt>woeid(<code class="docutils literal"><span class="pre">list``(``str</span></code>) or <code class="docutils literal"><span class="pre">list``(``int</span></code>), optional):</dt>
 <dd>Specify a <cite>Where On Earth Identifier</cite> (<cite>woeid</cite>). Up to ten WOEIDs may be specified. This filter is mutually exclusive with the <cite>q</cite> filter. Example: woeid=(1,2,3)</dd>
-<dt>typ(list(str) or list(int) or int, optional):</dt>
+<dt>typ(<code class="docutils literal"><span class="pre">list``(``str</span></code>) or <code class="docutils literal"><span class="pre">list``(``int</span></code>) or <code class="docutils literal"><span class="pre">int</span></code>, optional):</dt>
 <dd>Specify one or more place type codes (<a class="reference external" href="https://developer.yahoo.com/geo/geoplanet/guide/concepts.html#placetypes">https://developer.yahoo.com/geo/geoplanet/guide/concepts.html#placetypes</a>). Up to ten place type codes or names may be provided.</dd>
-<dt>degree(int or str, optional):</dt>
+<dt>degree(<code class="docutils literal"><span class="pre">int</span></code> or <code class="docutils literal"><span class="pre">str</span></code>, optional):</dt>
 <dd><cite>.degree</cite> specifier which represents the degree to which two places are neighborhoods. Only consider valid if either <cite>neighbors</cite> or <cite>children</cite> filters are set.</dd>
-<dt>nd(boolean, optional):</dt>
+<dt>nd(<code class="docutils literal"><span class="pre">boolean</span></code>, optional):</dt>
 <dd><p class="first">Specify a join operations on two filters. Example:</p>
 <div class="last highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">woeid</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">api</span> <span class="o">=</span> <span class="n">woeid</span><span class="o">.</span><span class="n">Api</span><span class="p">(</span><span class="n">client_id</span><span class="o">=</span><span class="s1">&#39;YOUR_CLIENT_ID&#39;</span><span class="p">)</span>
@@ -567,21 +597,21 @@ Args:</p>
 <dl class="docutils">
 <dt>Args:</dt>
 <dd><dl class="first last docutils">
-<dt>parent(boolean, optional):</dt>
+<dt>parent(<code class="docutils literal"><span class="pre">boolean</span></code>, optional):</dt>
 <dd>A relationship specifier used to return a parent place of a given woeid.</dd>
-<dt>ancestors(boolean, optional):</dt>
+<dt>ancestors(<code class="docutils literal"><span class="pre">boolean</span></code>, optional):</dt>
 <dd>A relationship specifier used to return one or more acestors of a place of a given woeid.</dd>
-<dt>belongtos(boolean, optional):</dt>
+<dt>belongtos(<code class="docutils literal"><span class="pre">boolean</span></code>, optional):</dt>
 <dd>A relationship specifier used to return a collection of places that have a place as a child or descendant (child of a child).</dd>
-<dt>neighbors(boolean, optional):</dt>
+<dt>neighbors(<code class="docutils literal"><span class="pre">boolean</span></code>, optional):</dt>
 <dd>A relationship specifier used to return a collection of places that neighbor of a place.</dd>
-<dt>children(boolean, optional):</dt>
+<dt>children(<code class="docutils literal"><span class="pre">boolean</span></code>, optional):</dt>
 <dd>A relationship specifier used to return a collection of places that are children of a place.</dd>
-<dt>siblings(boolean, optional):</dt>
+<dt>siblings(<code class="docutils literal"><span class="pre">boolean</span></code>, optional):</dt>
 <dd>A relationship specifier used to return a collection of places that are siblings of a place.</dd>
-<dt>descendants(boolean, optional):</dt>
+<dt>descendants(<code class="docutils literal"><span class="pre">boolean</span></code>, optional):</dt>
 <dd>A relationship specifier used to return a collection of places that are in the child hierarchy (the child, the child of child, etc).</dd>
-<dt>common(boolean, optional):</dt>
+<dt>common(<code class="docutils literal"><span class="pre">boolean</span></code>, optional):</dt>
 <dd>A relationship specifier used to return the common ancestor of both places.</dd>
 </dl>
 </dd>
@@ -598,7 +628,7 @@ Args:</p>
 <dl class="docutils">
 <dt>Args:</dt>
 <dd><dl class="first last docutils">
-<dt>code(int):</dt>
+<dt>code(<code class="docutils literal"><span class="pre">int</span></code>):</dt>
 <dd>The response code in integer</dd>
 </dl>
 </dd>
@@ -612,6 +642,10 @@ Args:</p>
 <dt id="woeid.utility.Utility.BuildParams">
 <em class="property">static </em><code class="descname">BuildParams</code><span class="sig-paren">(</span><em>appid</em>, <em>format='json'</em>, <em>select='short'</em>, <em>lang='en-us'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/woeid/utility.html#Utility.BuildParams"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#woeid.utility.Utility.BuildParams" title="Permalink to this definition">¶</a></dt>
 <dd><p>For constructing a parameter dictionary.</p>
+<dl class="docutils">
+<dt>Returns:</dt>
+<dd>Parameters dictionary</dd>
+</dl>
 </dd></dl>
 
 <dl class="staticmethod">
@@ -621,20 +655,20 @@ Args:</p>
 <dl class="docutils">
 <dt>Args:</dt>
 <dd><dl class="first last docutils">
-<dt>path_elements(list(str)):</dt>
+<dt>path_elements(<code class="docutils literal"><span class="pre">list``(``str</span></code>)):</dt>
 <dd>A list of paths that will be appended to the base url.</dd>
-<dt>extra_params(dict, optional):</dt>
+<dt>extra_params(<code class="docutils literal"><span class="pre">dict</span></code>, optional):</dt>
 <dd>A dictionary representing the parameters for making the url.</dd>
-<dt>extra_woeid(list(int) or list(str), optional):</dt>
+<dt>extra_woeid(<code class="docutils literal"><span class="pre">list``(``int</span></code>) or <code class="docutils literal"><span class="pre">list``(``str</span></code>), optional):</dt>
 <dd>This is useful when the <cite>common</cite> filter has been set. Aiming for making urls such as
 <cite>1234/common/3456/73923</cite></dd>
-<dt>filters(Filters, optional):</dt>
+<dt>filters(<code class="docutils literal"><span class="pre">Filters</span></code>, optional):</dt>
 <dd>A <cite>Filter</cite> object</dd>
-<dt>relationships(Relationships, optional):</dt>
+<dt>relationships(<code class="docutils literal"><span class="pre">Relationships</span></code>, optional):</dt>
 <dd>A <cite>Relationship</cite> object</dd>
-<dt>count(int, optional):</dt>
+<dt>count(<code class="docutils literal"><span class="pre">int</span></code>, optional):</dt>
 <dd>Specify the maximum number of results to return. A count of 0 is interpreted as <cite>no maximum</cite> (all resources)</dd>
-<dt>start(int, optional):</dt>
+<dt>start(<code class="docutils literal"><span class="pre">int</span></code>, optional):</dt>
 <dd>Skip the first N results.</dd>
 </dl>
 </dd>
@@ -650,7 +684,7 @@ Args:</p>
 <dl class="docutils">
 <dt>Args:</dt>
 <dd><dl class="first last docutils">
-<dt>parameters (dict):</dt>
+<dt>parameters (<code class="docutils literal"><span class="pre">dict</span></code>):</dt>
 <dd>dictionary of query parameters to be converted into a string for encoding and sending to Twitter.</dd>
 </dl>
 </dd>
@@ -660,15 +694,33 @@ Args:</p>
 </dd></dl>
 
 <dl class="staticmethod">
+<dt id="woeid.utility.Utility.GetLastRequestUrl">
+<em class="property">static </em><code class="descname">GetLastRequestUrl</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/woeid/utility.html#Utility.GetLastRequestUrl"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#woeid.utility.Utility.GetLastRequestUrl" title="Permalink to this definition">¶</a></dt>
+<dd><p>An utility function for fetching the most recent requesting url</p>
+<dl class="docutils">
+<dt>Returns:</dt>
+<dd>Last request url</dd>
+</dl>
+</dd></dl>
+
+<dl class="staticmethod">
 <dt id="woeid.utility.Utility.MakeRequest">
 <em class="property">static </em><code class="descname">MakeRequest</code><span class="sig-paren">(</span><em>url</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/woeid/utility.html#Utility.MakeRequest"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#woeid.utility.Utility.MakeRequest" title="Permalink to this definition">¶</a></dt>
-<dd><p>An utility function for making url request</p>
+<dd><p>An utility function for making url requests. Will do response check</p>
+<dl class="docutils">
+<dt>Returns:</dt>
+<dd>Response content in <code class="docutils literal"><span class="pre">bytes</span></code></dd>
+</dl>
 </dd></dl>
 
 <dl class="staticmethod">
 <dt id="woeid.utility.Utility.PrettyPrintResult">
-<em class="property">static </em><code class="descname">PrettyPrintResult</code><span class="sig-paren">(</span><em>retstr</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/woeid/utility.html#Utility.PrettyPrintResult"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#woeid.utility.Utility.PrettyPrintResult" title="Permalink to this definition">¶</a></dt>
+<em class="property">static </em><code class="descname">PrettyPrintResult</code><span class="sig-paren">(</span><em>bts</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/woeid/utility.html#Utility.PrettyPrintResult"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#woeid.utility.Utility.PrettyPrintResult" title="Permalink to this definition">¶</a></dt>
 <dd><p>An utility function for pretty printing the result with indentation and new lines.</p>
+<dl class="docutils">
+<dt>Returns:</dt>
+<dd>None</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
@@ -682,6 +734,8 @@ Args:</p>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="aboutme.html" class="btn btn-neutral float-right" title="About me" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="example.html" class="btn btn-neutral" title="Examples" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>

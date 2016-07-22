@@ -10,15 +10,15 @@ __author__ = 'Renchen'
 class Filters:
 	"""A class that encapsulates all filters
 		Args:
-			q(str or tuple, optional):
+			q(``str`` or ``tuple``, optional):
 				Specify a place name to search for or a tuple that has a place name and a focus. This filter is mutually exclusive with the `woeid` filter. The specified place can be any unicode characters. Focus can be either an ISO-3166-1 country code or a WOEID. For a "startswith" filter, specify the place as a string followed by an asterisk (*).
-			woeid(list(str) or list(int), optional):
+			woeid(``list``(``str``) or ``list``(``int``), optional):
 				Specify a `Where On Earth Identifier` (`woeid`). Up to ten WOEIDs may be specified. This filter is mutually exclusive with the `q` filter. Example: woeid=(1,2,3)
-			typ(list(str) or list(int) or int, optional):
+			typ(``list``(``str``) or ``list``(``int``) or ``int``, optional):
 				Specify one or more place type codes (https://developer.yahoo.com/geo/geoplanet/guide/concepts.html#placetypes). Up to ten place type codes or names may be provided.
-			degree(int or str, optional):
+			degree(``int`` or ``str``, optional):
 				`.degree` specifier which represents the degree to which two places are neighborhoods. Only consider valid if either `neighbors` or `children` filters are set.
-			nd(boolean, optional):
+			nd(``boolean``, optional):
 				Specify a join operations on two filters. Example:
 
 				 >>> import woeid
@@ -165,21 +165,21 @@ class Relationships:
 	""""A class that encapsulates all relationships
 
 		Args:
-			parent(boolean, optional):
+			parent(``boolean``, optional):
 				A relationship specifier used to return a parent place of a given woeid.
-			ancestors(boolean, optional):
+			ancestors(``boolean``, optional):
 				A relationship specifier used to return one or more acestors of a place of a given woeid.
-			belongtos(boolean, optional):
+			belongtos(``boolean``, optional):
 				A relationship specifier used to return a collection of places that have a place as a child or descendant (child of a child).
-			neighbors(boolean, optional):
+			neighbors(``boolean``, optional):
 				A relationship specifier used to return a collection of places that neighbor of a place.
-			children(boolean, optional):
+			children(``boolean``, optional):
 				A relationship specifier used to return a collection of places that are children of a place.
-			siblings(boolean, optional):
+			siblings(``boolean``, optional):
 				A relationship specifier used to return a collection of places that are siblings of a place.
-			descendants(boolean, optional):
+			descendants(``boolean``, optional):
 				A relationship specifier used to return a collection of places that are in the child hierarchy (the child, the child of child, etc).
-			common(boolean, optional):
+			common(``boolean``, optional):
 				A relationship specifier used to return the common ancestor of both places.
 		"""
 	def __init__(self,

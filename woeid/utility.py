@@ -1,3 +1,4 @@
+from collections import OrderedDict
 import json
 import urllib
 import requests
@@ -18,7 +19,7 @@ class ResponseCheck:
 	"""A utility class reponsible for chekcing the reponse code and raise corresponding error
 
 	Args:
-		code(int):
+		code(``int``):
 			The response code in integer
 	"""
 	def __init__(self,
@@ -33,6 +34,8 @@ class ResponseCheck:
 			raise WoeidError("The requested representation is not available for this resource")
 
 class Utility:
+	__cached_url = None
+	__response_code = None
 	@staticmethod
 	def BuildUrls(url,
 			  path_elements,
@@ -45,20 +48,20 @@ class Utility:
 		"""An utility class reponsible for building the url string
 
 		Args:
-			path_elements(list(str)):
+			path_elements(``list``(``str``)):
 				A list of paths that will be appended to the base url.
-			extra_params(dict, optional):
+			extra_params(``dict``, optional):
 				A dictionary representing the parameters for making the url.
-			extra_woeid(list(int) or list(str), optional):
+			extra_woeid(``list``(``int``) or ``list``(``str``), optional):
 				This is useful when the `common` filter has been set. Aiming for making urls such as
 				`1234/common/3456/73923`
-			filters(Filters, optional):
+			filters(``Filters``, optional):
 				A `Filter` object
-			relationships(Relationships, optional):
+			relationships(``Relationships``, optional):
 				A `Relationship` object
-			count(int, optional):
+			count(``int``, optional):
 				Specify the maximum number of results to return. A count of 0 is interpreted as `no maximum` (all resources)
-			start(int, optional):
+			start(``int``, optional):
 				Skip the first N results.
 		Returns:
 			A valid url containing all queries, filters, parameters.
@@ -106,7 +109,7 @@ class Utility:
 		"""Return a string in key=value&key=value form. Values of None are not included in the output string.
 
 		Args:
-			parameters (dict):
+			parameters (``OrderedDict``):
 				dictionary of query parameters to be converted into a string for encoding and sending to Twitter.
 
 		Returns:
@@ -114,10 +117,10 @@ class Utility:
 		"""
 		if parameters is None:
 			return None
-		if not isinstance(parameters, dict):
+		if not isinstance(parameters, OrderedDict):
 			raise WoeidError("`parameters` must be a dict.")
 		else:
-			return urlencode(dict((k, v) for k, v in parameters.items() if v is not None))
+			return urlencode(OrderedDict((k, v) for k, v in parameters.items() if v is not None))
 
 	@staticmethod
 	def BuildParams(appid,
@@ -125,43 +128,86 @@ class Utility:
 					select='short',
 					lang='en-us'):
 		"""For constructing a parameter dictionary.
+
+		Returns:
+			Parameters dictionary
 		"""
-		return {
-			'format':format,
-			'appid':appid,
-			'select':select,
-			'lang':lang
-		}
+		dict = OrderedDict({})
+		dict['format'] = format
+		dict['select'] = select
+		dict['lang'] = lang
+		dict['appid'] = appid
+
+		return dict
+
 
 	@staticmethod
 	def MakeRequest(url):
+		"""An utility function for making url requests. Will do response check
+
+		Returns:
+			Response content in ``bytes``
+		"""
+		Utility.__cached_url = url
 		"""An utility function for making url request
 		"""
-		print("Making requests on: %s"%url)
+		#print("Making requests on: %s"%url)
 		ret = {}
 		try:
 			response = requests.get(url)
+			Utility.__response_code = response.status_code
 			ResponseCheck(response.status_code)
-			ret = response.text.encode('ascii')
+			# return in bytes!
+			ret = response.content
 		except WoeidError as e:
 			print(e.message)
 			return ret
 		return ret
 
 	@staticmethod
-	def PrettyPrintResult(retstr):
+	def PrettyPrintResult(bts):
+		return
 		"""An utility function for pretty printing the result with indentation and new lines.
+
+		Returns:
+			None
         """
-		if isinstance(retstr, bytes):
-			retstr = retstr.decode()
-		if not retstr:
+		#print(isinstance(bts, bytes))
+		if not isinstance(bts, bytes):
 			return
+		# decode into unicode
+		unicode_str = bts.decode('utf-8')
 		try:
-			print(json.dumps(json.loads(retstr), indent=4, separators={',' , ': '}, ensure_ascii=False))
+			# Has to set ensure_ascii off to keep the non-ascii characters.
+			print(json.dumps(json.loads(unicode_str), indent=4, separators={',' , ': '}, ensure_ascii=False))
 		except TypeError as e:
 			print(e)
 		except ValueError as e:
-			xxml = xml.dom.minidom.parseString(retstr)
+			xxml = xml.dom.minidom.parseString(unicode_str)
 			print(xxml.toprettyxml())
 		finally:
 			pass
+
+	@staticmethod
+	def GetLastRequestUrl():
+		"""An utility function for fetching the most recent requesting url
+
+		Returns:
+			Last request url in ``str``
+		"""
+		if Utility.__cached_url:
+			return Utility.__cached_url
+		else:
+			return None
+
+	@staticmethod
+	def GetLastResponseCode():
+		"""A utility function for fetching the most recent reponse code
+
+		Returns:
+			Last response code in ``int``
+		"""
+		if Utility.__response_code:
+			return Utility.__response_code
+		else:
+			return None
