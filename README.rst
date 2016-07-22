@@ -1,7 +1,4 @@
-.. woeid documentation master file, created by
-   sphinx-quickstart on Sun Jul 17 14:53:25 2016.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
+woied Python
 
 Welcome to woeid's documentation!
 ---------------------------------
@@ -25,28 +22,19 @@ Welcome to woeid's documentation!
 |LinkedIn  | https://ca.linkedin.com/in/renchensun   |
 +----------+-----------------------------------------+
 
-Contents:
-
-.. toctree::
-   :maxdepth: 2
-
-   installation.rst
-   getting_started.rst
-   example.rst
-   woeid.rst
-   aboutme.rst
-
-
+============
 Introduction
-------------
+============
+
 This library provides a pure Python interface for the `Yahoo GeoPlanet API <https://developer.yahoo.com/geo/geoplanet/guide/>`_. It works with Python 2.7+ and Python 3.
 
 Yahoo! GeoPlanetTM is designed to bridge the gap between the Real and Virtual worlds by providing the Internet with an open, comprehensive, and intelligent infrastructure for geo-referencing data on Earth’s surface.
 
 In practical terms, Yahoo! GeoPlanet is a resource for managing all geo-permanent named places on earth. It provides the Geographic Developer Community with the vocabulary and grammar to describe the world's geography in an unequivocal, permanent, and language-neutral manner, and is designed to facilitate spatial interoperability and geographic discovery. Developers looking to geo-enable their applications can use GeoPlanet to traverse the spatial hierarchy, identify the geography relevant to their users and their business, and in turn, unambiguously geotag, geotarget, and geolocate data across the Web.
 
+============
 Installation
-------------
+============
 
 **From PyPI** ::
 
@@ -62,8 +50,9 @@ Extract the source distribution and run::
 
     $ python setup.py install
 
+================
 Getting the code
-----------------
+================
 
 The code is hosted at `Github` https://github.com/Ray-SunR/woeid
 
@@ -72,9 +61,9 @@ Check out the latest development version anonymously with::
 $ git clone https://github.com/Ray-SunR/woeid.git
 $ cd woeid
 
-
+=======
 Testing
--------
+=======
 
 Navigate into test folder::
  	$ cd test
@@ -83,15 +72,18 @@ and run::
 
     $ python test.py
 
+===============================
 Getting your application tokens
--------------------------------
+===============================
+
 This section is subject to changes made by Yahoo and may not always be completely up-to-date. If you see something change on their end, please create a `new issue on Github <https://github.com/Ray-SunR/woeid/issues/new>`_ or submit a pull request to update it.
 
 
 In order to use the woeid API client, you first need to acquire the consumer key. The ``consumer key`` will be required in order to create a ``woeid.Api`` object.
 
+---------------
 Create your app
-_______________
+---------------
 
 The first step in doing so is to create a `Yahoo App <https://developer.yahoo.com/apps/>`_. Click the "Create an App" button and fill out the fields on the next page.
 
@@ -100,15 +92,17 @@ The first step in doing so is to create a `Yahoo App <https://developer.yahoo.co
 
 If there are any problems with the information on that page, Yahoo will complain and you can fix it. (Make sure to get the name correct - it is unclear if you can change this later.) On the next screen, you'll see the application that you created and some information about it:
 
+--------
 Your app
-_________
+--------
 
 Once your app is created, you'll be directed to a new page showing you some information about it.
 
 .. image:: docs/yahoo-app-creation-part2.png
 
+---------
 Your Keys
-_________
+---------
 
 The stirng which is ecnlosed in red rectangle is your ``consumer key``.
 
@@ -119,6 +113,7 @@ At this point, you can test out your application using the ``consumer key`` to i
     import woeid
     api = woeid.Api(client_id=[consumer_key])
 
+--------
 Examples
 --------
 
