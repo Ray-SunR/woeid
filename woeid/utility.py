@@ -1,3 +1,4 @@
+from __future__ import print_function
 from collections import OrderedDict
 import json
 import urllib
@@ -166,12 +167,11 @@ class Utility:
 
 	@staticmethod
 	def PrettyPrintResult(bts):
-		return
 		"""An utility function for pretty printing the result with indentation and new lines.
 
 		Returns:
 			None
-        """
+		"""
 		#print(isinstance(bts, bytes))
 		if not isinstance(bts, bytes):
 			return

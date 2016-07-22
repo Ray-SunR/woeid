@@ -29,9 +29,12 @@ $ git clone https://github.com/Ray-SunR/woeid.git
 $ cd woeid
 
 
-Running the test code
-=====================
+Testing
+=======
 
-The testing code is located inside the test folder. Run the test using::
+Navigate into test folder::
+ 	$ cd test
 
-    $ python client.py
+and run::
+
+    $ python test.py

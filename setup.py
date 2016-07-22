@@ -2,17 +2,16 @@ __author__ = 'Renchen'
 from distutils.core import setup
 
 setup(
-    name='woeid',
-    version='0.1.4',
-    author='Renchen Sun',
-    author_email='sunrenchen@gmail.com',
-    packages=['woeid', 'woeid.test'],
-    url='https://github.com/Ray-SunR/woeid',
-    download_url="https://github.com/Ray-SunR/woeid/archive/0.1.zip",
-    license='LICENSE.txt',
-    description='A python REST apis for getting Yahoo GeoPlanet web services (https://developer.yahoo.com/geo/geoplanet/guide/)',
-    long_description=open('README.md').read(),
-    keywords=['woeid', 'geoplanet', 'yahoo'],
-    package_data={'': ['LICENSE.txt']},
-	install_requires=['requests', 'six']
+	name='woeid',
+	version='1.0.0',
+	author='Renchen Sun',
+	author_email='sunrenchen@gmail.com',
+	packages=['woeid', 'woeid.test'],
+	url='https://github.com/Ray-SunR/woeid',
+	license='LICENSE.txt',
+	description='A python REST APIs for Yahoo GeoPlanet web services (https://developer.yahoo.com/geo/geoplanet/guide/)',
+	long_description=open('README.rst').read(),
+	install_requires=['future', 'requests', 'six'],
+	keywords=['woeid', 'geoplanet', 'yahoo'],
+	package_data={'': ['LICENSE.txt']}
 )
