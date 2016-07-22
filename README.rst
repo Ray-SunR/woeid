@@ -8,6 +8,12 @@ Welcome to woeid's documentation!
 **A Python interface for Yahoo GeoPlanet Web Services REST APIs. Python 2 and 3 are all supported!**
 
 .. image:: https://readthedocs.org/projects/woeid/badge/?version=latest
+      :target: http://woeid.readthedocs.io/en/latest/?badge=latest
+      :alt: Documentation Status
+
+.. image:: https://requires.io/github/Ray-SunR/woeid/requirements.svg?branch=master
+     :target: https://requires.io/github/Ray-SunR/woeid/requirements/?branch=master
+     :alt: Requirements Status
 
 +----------+-----------------------------------------+
 |Author    | Renchen Sun                             |
