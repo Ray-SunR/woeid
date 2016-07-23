@@ -9,12 +9,12 @@ I consider myself:
 
 	- A heavy ``vimer``
 
- 	- A	command line lover
+	- A	command line lover
 
- 	- Most capable of ``C/C++`` and ``Python`` programming. Also capable of programming in ``Java``, ``Javascript``, ``C#``, ``ObjC``
+	- Most capable of ``C/C++`` and ``Python`` programming. Also capable of programming in ``Java``, ``Javascript``, ``C#``, ``ObjC``
 
- 	- Comfortable writing portable codes for different platforms (``Windows``, ``Linux``, ``MacOS``, ``iOS``, ``Android``)
+	- Comfortable writing portable codes for different platforms (``Windows``, ``Linux``, ``MacOS``, ``iOS``, ``Android``)
 
- 	- Passionate about server-side development (``Node``, ``Meteor``)
+	- Passionate about server-side development (``Node``, ``Meteor``)
 
- 	- An expert in ``OpenXml`` standards
+	- An expert in ``OpenXml`` standards
