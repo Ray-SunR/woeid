@@ -67,7 +67,7 @@ Testing
 
 Navigate into test folder::
 
- 	$ cd test
+    $ cd test
 
 and run::
 

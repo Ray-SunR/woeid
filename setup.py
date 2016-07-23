@@ -3,7 +3,7 @@ from distutils.core import setup
 
 setup(
 	name='woeid',
-	version='1.0.0',
+	version='1.0.1',
 	author='Renchen Sun',
 	author_email='sunrenchen@gmail.com',
 	packages=['woeid', 'woeid.test'],
