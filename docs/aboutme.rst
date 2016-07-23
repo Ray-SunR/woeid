@@ -3,5 +3,13 @@ About me
 
 .. image:: favicon1.gif
 
-Hello! My name is Renchen. I am a 24-year-old Full-Stack Software Developer from Vancouver BC, Canada. I love software engineering. Most capable of ``C/C++`` system programming. Also dealt with server-side development (``Node``, ``Meteor``). Consider myself an expert in ``OpenOfficeXML`` industry.
+Hello! My name is Renchen. I am a 24-year-old Full-Stack Software Developer from Vancouver BC, Canada.
+
+ I consider myself:
+ 	A heavy ``vimer``
+ 	A command line lover
+ 	Most capable of ``C/C++`` and ``Python`` programming
+ 	Comfortable writing portable codes for different platforms (``Windows``, ``Linux``, ``MacOS``, ``iOS``, ``Android``)
+ 	Passionate about server-side development (``Node``, ``Meteor``)
+ 	An expert in ``OpenXml`` standards
 

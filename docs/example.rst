@@ -1,3 +1,4 @@
+========
 Examples
 ========
 
@@ -25,7 +26,7 @@ Example 2: Retrieving the Most Likely Place for a Given Place Name'
 
 ::
 
-    woeid.PrettyPrintResult(api.GetPlaces(q='SFO'))
+    woeid.PrettyPrintResult(api.GetPlaces(q=u'福州'))
 
 Example 3: Retrieving the Five Most Likely Places for a Given Placename'
 ************************************************************************

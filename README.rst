@@ -114,9 +114,9 @@ At this point, you can test out your application using the ``consumer key`` to i
     import woeid
     api = woeid.Api(client_id=[consumer_key])
 
---------
+========
 Examples
---------
+========
 
 Example 1: Create an ``woeid`` api object
 *****************************************
