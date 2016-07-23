@@ -280,7 +280,7 @@ Example 18. Retrieving a Partial Collection of Place Types'
 About me
 ========
 
-.. image::docs/favicon1.gif
+.. image:: docs/favicon1.gif
 
 Hello! My name is Renchen. I am a 24-year-old Full-Stack Software Developer from Vancouver BC, Canada.
 
