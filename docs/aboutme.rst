@@ -11,7 +11,7 @@ I consider myself:
 
  	- A	command line lover
 
- 	- Most capable of ``C/C++`` and ``Python`` programming. Also capable of programming in Java, Javascript, C#, ObjC
+ 	- Most capable of ``C/C++`` and ``Python`` programming. Also capable of programming in ``Java``, ``Javascript``, ``C#``, ``ObjC``
 
  	- Comfortable writing portable codes for different platforms (``Windows``, ``Linux``, ``MacOS``, ``iOS``, ``Android``)
 
