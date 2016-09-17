@@ -10,7 +10,7 @@ Installation
 
 **From source**
 
-Download from pypi https://pypi.python.org/pypi/woeid/0.1.4
+Download from pypi https://pypi.python.org/pypi/woeid/1.0.0
 
 Download the latest `woeid` library from: https://github.com/Ray-SunR/woeid
 
